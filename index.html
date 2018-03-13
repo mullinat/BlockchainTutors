@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="utf-8"/>
 <html>
 
 <head>
@@ -31,6 +32,10 @@
         }
     })
     //end of web3 copy and pasted code
+    var TempContract = createtutor;
+    var MyContract = web3.eth.contract(TempContract.abi).at(TempContract.address);
+    web3.eth.defaultAccount=web3.eth.coinbase;
+    //MyContract.CreateNewTutor("Paul", "MATH", "www.paulmullins.tech", "IPFS LINK", "paulmullins@protonmail.com", {from:web3.eth.accounts[0],gas:1000000})
 </script>
 
 </html>

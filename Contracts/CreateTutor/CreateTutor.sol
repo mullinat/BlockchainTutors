@@ -38,15 +38,19 @@ contract CreateTutor {
         tmp_tutor.balance = 0;
         next_tutor_index = next_tutor_index + 1;
     }
-
-    /*function get_name(uint tmp_index) public returns(string){
-        return tutors[tmp_index].name;
-    }
-    function get_eth_address(uint tmp_index) public returns(address){
-        return tutors[tmp_index].eth_address;
-    }*/
+    /*
+        Create reset functions
+        string name;
+        address eth_address;
+        string capable_of_tutoring;
+        string website;
+        string ipfs_link;
+        string email;
+        uint balance;
+    */        
 }
 /*
+    Create Invoice Function
     function invoice(
         string to_name,
         address to_address,
