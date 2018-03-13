@@ -5,7 +5,6 @@ contract CreateTutor {
     struct Tutor 
     {
         string name;
-        address eth_address;
         string capable_of_tutoring;
         string website;
         string ipfs_link;
@@ -13,8 +12,7 @@ contract CreateTutor {
         uint balance;
     }
 
-    mapping (uint => Tutor) public tutors;
-    uint32 public next_tutor_index = 1;
+    mapping (address => Tutor) public tutors;
     address public owner;
     function CreateTutor() public
     {
@@ -28,26 +26,34 @@ contract CreateTutor {
         string tmp_email
     ) public payable
     {
-        var tmp_tutor = tutors[next_tutor_index];
+        var tmp_tutor = tutors[msg.sender];
         tmp_tutor.name = tmp_name;
-        tmp_tutor.eth_address = msg.sender;
         tmp_tutor.capable_of_tutoring = tmp_capable_of_tutoring;
         tmp_tutor.website = tmp_website;
         tmp_tutor.ipfs_link = tmp_ipfs_link;
         tmp_tutor.email = tmp_email;
         tmp_tutor.balance = 0;
-        next_tutor_index = next_tutor_index + 1;
     }
-    /*
-        Create reset functions
-        string name;
-        address eth_address;
-        string capable_of_tutoring;
-        string website;
-        string ipfs_link;
-        string email;
-        uint balance;
-    */        
+    function set_name(string tmp_name) public 
+    {
+        tutors[msg.sender].name = tmp_name;
+    }  
+    function set_capable_of_tutoring(string tmp_capable_of_tutoring) public 
+    {
+        tutors[msg.sender].capable_of_tutoring = tmp_capable_of_tutoring;
+    }  
+    function set_website(string tmp_website) public 
+    {
+        tutors[msg.sender].website = tmp_website;
+    }  
+    function set_ipfs_link(string tmp_ipfs_link) public 
+    {
+        tutors[msg.sender].ipfs_link = tmp_ipfs_link;
+    }  
+    function set_email(string tmp_email) public 
+    {
+        tutors[msg.sender].email = tmp_email;
+    }      
 }
 /*
     Create Invoice Function
