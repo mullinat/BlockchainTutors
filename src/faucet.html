@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html>
+
+<head>
+    <script src="./web3.js"></script>
+    <script src="./CreateTutor.js"></script>
+</head>
+
+<body>
+    <h1>Check the console</h1>
+    <a href="./web3.js">Should link to web3.js</a><br>
+    <a href="./CreateTutor.js">Should link to CreateTutor.js</a><br>
+    <form name="1 ETH Faucet" action="javascript:Send_One_To()">
+        Input eth address here: <input id="one_eth_address" type="text"><button>Send</button>
+    </form>
+</body>
+
+<script>
+    var web3 = new Web3();
+    web3.setProvider(new web3.providers.HttpProvider("http://localhost:8545"));
+    function TestConnected() {
+        console.log("Is connected = " + web3.isConnected() + "\n");
+    }
+    TestConnected()
+    function Send_Ether_To(amount, _to){
+        var sender = eth.accounts[9];
+        var receiver = _to;
+        var amount = web3.toWei(amount, "ether");
+    }
+    function Send_One_To(){
+        console.log(document.getElementById("one_eth_address").value);
+    }
+
+</script>
+</html>
