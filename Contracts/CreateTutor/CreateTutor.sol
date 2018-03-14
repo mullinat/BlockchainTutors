@@ -1,5 +1,4 @@
 pragma solidity ^0.4.16;
-
 contract CreateTutor {
     
     struct Tutor 
@@ -53,20 +52,5 @@ contract CreateTutor {
     function set_email(string tmp_email) public 
     {
         tutors[msg.sender].email = tmp_email;
-    }      
-}
-/*
-    Create Invoice Function
-    function invoice(
-        string to_name,
-        address to_address,
-        address invoice_amount,
-        string capable_of_tutoring,
-        string website,
-        string ipfs_link,
-        string email
-    ) public payable returns (uint8[5])
-    {
-        return([0,1,2,3,4]);
     }
-*/
+}

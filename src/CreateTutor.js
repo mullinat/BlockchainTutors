@@ -1,30 +1,4 @@
-<!DOCTYPE html>
-<meta charset="utf-8"/>
-<html>
-
-<head>
-    <script src="./src/web3.js"></script>
-    <script src="./src/CreateTutor.js"></script>
-</head>
-
-<body>
-    <h1>Check the console</h1>
-    <a href="./src/web3.js">Should link to web3.js</a><br>
-    <a href="./src/CreateTutor.js">Should link to CreateTutor.js</a>
-</body>
-
-<script>
-    var web3 = new Web3();
-    web3.setProvider(new web3.providers.HttpProvider("http://localhost:8545"));
-    function TestConnected() {
-        console.log("Is connected = " + web3.isConnected() + "\n");
-    }
-    TestConnected()
-
-
-
-    //Web3 contract code below
-    var createtutorContract = web3.eth.contract([{"constant":false,"inputs":[{"name":"tmp_capable_of_tutoring","type":"string"}],"name":"set_capable_of_tutoring","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tmp_name","type":"string"},{"name":"tmp_capable_of_tutoring","type":"string"},{"name":"tmp_website","type":"string"},{"name":"tmp_ipfs_link","type":"string"},{"name":"tmp_email","type":"string"}],"name":"CreateNewTutor","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"tmp_email","type":"string"}],"name":"set_email","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tmp_name","type":"string"}],"name":"set_name","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"tutors","outputs":[{"name":"name","type":"string"},{"name":"capable_of_tutoring","type":"string"},{"name":"website","type":"string"},{"name":"ipfs_link","type":"string"},{"name":"email","type":"string"},{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"tmp_ipfs_link","type":"string"}],"name":"set_ipfs_link","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tmp_website","type":"string"}],"name":"set_website","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]);
+var createtutorContract = web3.eth.contract([{"constant":false,"inputs":[{"name":"tmp_capable_of_tutoring","type":"string"}],"name":"set_capable_of_tutoring","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tmp_name","type":"string"},{"name":"tmp_capable_of_tutoring","type":"string"},{"name":"tmp_website","type":"string"},{"name":"tmp_ipfs_link","type":"string"},{"name":"tmp_email","type":"string"}],"name":"CreateNewTutor","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"tmp_email","type":"string"}],"name":"set_email","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tmp_name","type":"string"}],"name":"set_name","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"tutors","outputs":[{"name":"name","type":"string"},{"name":"capable_of_tutoring","type":"string"},{"name":"website","type":"string"},{"name":"ipfs_link","type":"string"},{"name":"email","type":"string"},{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"tmp_ipfs_link","type":"string"}],"name":"set_ipfs_link","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tmp_website","type":"string"}],"name":"set_website","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]);
 var createtutor = createtutorContract.new(
    {
      from: web3.eth.accounts[0], 
@@ -36,14 +10,3 @@ var createtutor = createtutorContract.new(
          console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
     }
  })
- //web3 contract code above
-
-
-
-    var TempContract = createtutor;
-    var MyContract = web3.eth.contract(TempContract.abi).at(TempContract.address);
-    web3.eth.defaultAccount=web3.eth.coinbase;
-    //MyContract.CreateNewTutor("Paul", "MATH", "www.paulmullins.tech", "IPFS LINK", "paulmullins@protonmail.com", {from:web3.eth.accounts[2],gas:1000000})
-</script>
-
-</html>

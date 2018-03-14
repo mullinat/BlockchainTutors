@@ -5,6 +5,10 @@ https://solidity.readthedocs.io/en/develop/solidity-by-example.html
 */
 /// @title Voting with delegation.
 contract Ballot {
+    function f() public pure returns (uint8[5]) {
+        string[4] memory adaArr = ["This", "is", "an", "array"];
+        return ([1, 2, 3, 4, 5]);
+    }
     // This declares a new complex type which will
     // be used for variables later.
     // It will represent a single voter.
