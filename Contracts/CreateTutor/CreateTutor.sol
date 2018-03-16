@@ -1,8 +1,7 @@
 pragma solidity ^0.4.16;
 contract CreateTutor {
     
-    struct Tutor 
-    {
+    struct Tutor {
         string name;
         string capable_of_tutoring;
         string website;
@@ -13,8 +12,7 @@ contract CreateTutor {
 
     mapping (address => Tutor) public tutors;
     address public owner;
-    function CreateTutor() public
-    {
+    function CreateTutor() public {
         owner = msg.sender;
     }
     function CreateNewTutor(
@@ -33,24 +31,19 @@ contract CreateTutor {
         tmp_tutor.email = tmp_email;
         tmp_tutor.balance = 0;
     }
-    function set_name(string tmp_name) public 
-    {
+    function set_name(string tmp_name) public {
         tutors[msg.sender].name = tmp_name;
     }  
-    function set_capable_of_tutoring(string tmp_capable_of_tutoring) public 
-    {
+    function set_capable_of_tutoring(string tmp_capable_of_tutoring) public {
         tutors[msg.sender].capable_of_tutoring = tmp_capable_of_tutoring;
     }  
-    function set_website(string tmp_website) public 
-    {
+    function set_website(string tmp_website) public {
         tutors[msg.sender].website = tmp_website;
     }  
-    function set_ipfs_link(string tmp_ipfs_link) public 
-    {
+    function set_ipfs_link(string tmp_ipfs_link) public {
         tutors[msg.sender].ipfs_link = tmp_ipfs_link;
     }  
-    function set_email(string tmp_email) public 
-    {
+    function set_email(string tmp_email) public {
         tutors[msg.sender].email = tmp_email;
     }
 }
