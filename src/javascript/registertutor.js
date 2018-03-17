@@ -13,10 +13,15 @@ $.getJSON("./abi/CreateTutor.json", function (result) {
             registertutor();
         }
         else{
-            console.log("Create function to edit information already on the blockchain")
+            edittutor();
         }
     });
 });
+function edittutor() {
+    $.get("./src/html/edittutor.html", function (result) {
+        $("body").append(result);
+    })
+}
 
 function registertutor() {
     $.get("./src/html/registertutor.html", function (result) {
@@ -37,4 +42,29 @@ function CreateTutor() {
     MyContract.createNewTutor(tutor_info[0], tutor_info[1], tutor_info[2], tutor_info[3], tutor_info[4], function () {
         console.log("Information deployed successfully")
     });
+}
+
+function UpdateTutor(tmpID){
+    console.log("SOMETHING HAPPENS");
+    console.log(tmpID);
+    switch(tmpID){
+        case "tutor_name":
+            MyContract.setName(document.getElementById(tmpID).value, function(){console.log("Ummm what now?")});
+            break;
+        case "tutor_subjects":
+            MyContract.setCapableOfTutoring(document.getElementById(tmpID).value, function(){console.log("Ummm what now?")});
+            break;
+        case "tutor_website":
+            MyContract.setWebsite(document.getElementById(tmpID).value, function(){console.log("Ummm what now?")});
+            break;
+        case "tutor_IPFS":
+            MyContract.setIpfsLink(document.getElementById(tmpID).value, function(){console.log("Ummm what now?")});
+            break;
+        case "tutor_email":
+            MyContract.setEmail(document.getElementById(tmpID).value, function(){console.log("Ummm what now?")});
+            break;
+        default:
+            console.log("Something went wrong");
+    }
+    console.log("OK we got somewhere")
 }
