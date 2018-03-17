@@ -4,6 +4,7 @@ const fs = require('fs');
 const mustache = require('mustache');//This is currently not used but will be in the future
 const ip = require("ip");// ip.address() 
 app.use('/src', express.static('src'));
+app.use('/abi', express.static('TruffleWorkspace/build/contracts'));
 app.get('/', function (req, res) {
     fs.readFile('./templates/index.mustache', 'utf8', (err, data) => {
         if (err) throw err;
