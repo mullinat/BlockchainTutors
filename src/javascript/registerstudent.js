@@ -1,6 +1,7 @@
 var address = '0xb9b13bf3a4312e9b3fc46397127339fce4d4df0f';
 var MyContractABI;
 var MyContract;
+var StudentInformation;
 $.getJSON("./abi/CreateStudent.json", function (result) {
     //console.log(result);
     //console.log(field);
@@ -9,6 +10,7 @@ $.getJSON("./abi/CreateStudent.json", function (result) {
     MyContract.students(web3.eth.coinbase, function (err, result) {
         //console.log(result);
         //console.log(result[0]);
+        StudentInformation = result;
         if (result[0] == "") {
             registerstudent();
         }
@@ -20,7 +22,13 @@ $.getJSON("./abi/CreateStudent.json", function (result) {
 function editstudent() {
     $.get("./src/html/editstudent.html", function (result) {
         $("body").append(result);
+        showStudentInformation();
     })
+}
+function showStudentInformation(){
+    $("#existingStudentInformation").append("<p>Name : " + StudentInformation[0] + "</p>");
+    $("#existingStudentInformation").append("<p>Topics of Interest : " + StudentInformation[2] + "</p>");
+    $("#existingStudentInformation").append("<p>email : " + StudentInformation[3] + "</p>");
 }
 
 function registerstudent() {
