@@ -46,9 +46,9 @@ if (typeof web3 == "undefined") {
         }
     })
 }
-/*else {
+else {
     function TestConnected() {
         console.log("Is connected = " + web3.isConnected() + "\n");
     }
     TestConnected()
-}*/
+}
