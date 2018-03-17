@@ -1,6 +1,7 @@
 var address = '0x3913a50ef1881417e3c73ccb8d1caa9b9d5c6d7a';
 var MyContractABI;
 var MyContract;
+var TutorInformation;
 $.getJSON("./abi/CreateTutor.json", function (result) {
     //console.log(result);
     //console.log(field);
@@ -9,6 +10,7 @@ $.getJSON("./abi/CreateTutor.json", function (result) {
     MyContract.tutors(web3.eth.coinbase, function (err, result) {
         //console.log(result);
         //console.log(result[0]);
+        TutorInformation = result;
         if (result[0] == "" ) {
             registertutor();
         }
@@ -20,7 +22,15 @@ $.getJSON("./abi/CreateTutor.json", function (result) {
 function edittutor() {
     $.get("./src/html/edittutor.html", function (result) {
         $("body").append(result);
+        showTutorInformation();
     })
+}
+function showTutorInformation(){
+    $("#showTutorInformation").append("<p>Name : " + TutorInformation[0] + "</p>");
+    $("#showTutorInformation").append("<p>Topics of Interest : " + TutorInformation[1] + "</p>");
+    $("#showTutorInformation").append("<p>Website : " + TutorInformation[2] + "</p>");
+    $("#showTutorInformation").append("<p>IPFS : " + TutorInformation[3] + "</p>");
+    $("#showTutorInformation").append("<p>email : " + TutorInformation[4] + "</p>");
 }
 
 function registertutor() {
