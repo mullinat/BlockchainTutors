@@ -1,0 +1,333 @@
+{
+  "contractName": "BlockchainTutorAgency",
+  "abi": [],
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a7230582012d483346a2781c748e56f0a27c0027ce66bd4840e85ecb9a42b8b38ce60f63e0029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a7230582012d483346a2781c748e56f0a27c0027ce66bd4840e85ecb9a42b8b38ce60f63e0029",
+  "sourceMap": "163:187:1:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "163:187:1:-;;;;;",
+  "source": "pragma solidity ^0.4.16;\nimport \"../CreateStudent/CreateStudent.sol\";\nimport \"../CreateTutor/CreateTutor.sol\";\nimport \"../InvoiceGenerator/InvoiceGenerator.sol\";\n\ncontract BlockchainTutorAgency {\n    CreateStudent student_class;  \n    CreateTutor tutor_class;\n    InvoiceGenerator invoice_class;\n    //I still don't know what I am going to do here\n\n}\n",
+  "sourcePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/BlockchainTutorAgency/BlockchainTutorAgency.sol",
+  "ast": {
+    "absolutePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/BlockchainTutorAgency/BlockchainTutorAgency.sol",
+    "exportedSymbols": {
+      "BlockchainTutorAgency": [
+        42
+      ]
+    },
+    "id": 43,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 32,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "absolutePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/CreateStudent/CreateStudent.sol",
+        "file": "../CreateStudent/CreateStudent.sol",
+        "id": 33,
+        "nodeType": "ImportDirective",
+        "scope": 43,
+        "sourceUnit": 152,
+        "src": "25:44:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/CreateTutor/CreateTutor.sol",
+        "file": "../CreateTutor/CreateTutor.sol",
+        "id": 34,
+        "nodeType": "ImportDirective",
+        "scope": 43,
+        "sourceUnit": 329,
+        "src": "70:40:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/InvoiceGenerator/InvoiceGenerator.sol",
+        "file": "../InvoiceGenerator/InvoiceGenerator.sol",
+        "id": 35,
+        "nodeType": "ImportDirective",
+        "scope": 43,
+        "sourceUnit": 438,
+        "src": "111:50:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 42,
+        "linearizedBaseContracts": [
+          42
+        ],
+        "name": "BlockchainTutorAgency",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 37,
+            "name": "student_class",
+            "nodeType": "VariableDeclaration",
+            "scope": 42,
+            "src": "200:27:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_CreateStudent_$151",
+              "typeString": "contract CreateStudent"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 36,
+              "name": "CreateStudent",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 151,
+              "src": "200:13:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_CreateStudent_$151",
+                "typeString": "contract CreateStudent"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 39,
+            "name": "tutor_class",
+            "nodeType": "VariableDeclaration",
+            "scope": 42,
+            "src": "235:23:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_CreateTutor_$328",
+              "typeString": "contract CreateTutor"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 38,
+              "name": "CreateTutor",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 328,
+              "src": "235:11:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_CreateTutor_$328",
+                "typeString": "contract CreateTutor"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 41,
+            "name": "invoice_class",
+            "nodeType": "VariableDeclaration",
+            "scope": 42,
+            "src": "264:30:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_InvoiceGenerator_$437",
+              "typeString": "contract InvoiceGenerator"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 40,
+              "name": "InvoiceGenerator",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 437,
+              "src": "264:16:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_InvoiceGenerator_$437",
+                "typeString": "contract InvoiceGenerator"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 43,
+        "src": "163:187:1"
+      }
+    ],
+    "src": "0:351:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/BlockchainTutorAgency/BlockchainTutorAgency.sol",
+    "exportedSymbols": {
+      "BlockchainTutorAgency": [
+        42
+      ]
+    },
+    "id": 43,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 32,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "absolutePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/CreateStudent/CreateStudent.sol",
+        "file": "../CreateStudent/CreateStudent.sol",
+        "id": 33,
+        "nodeType": "ImportDirective",
+        "scope": 43,
+        "sourceUnit": 152,
+        "src": "25:44:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/CreateTutor/CreateTutor.sol",
+        "file": "../CreateTutor/CreateTutor.sol",
+        "id": 34,
+        "nodeType": "ImportDirective",
+        "scope": 43,
+        "sourceUnit": 329,
+        "src": "70:40:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/InvoiceGenerator/InvoiceGenerator.sol",
+        "file": "../InvoiceGenerator/InvoiceGenerator.sol",
+        "id": 35,
+        "nodeType": "ImportDirective",
+        "scope": 43,
+        "sourceUnit": 438,
+        "src": "111:50:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 42,
+        "linearizedBaseContracts": [
+          42
+        ],
+        "name": "BlockchainTutorAgency",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 37,
+            "name": "student_class",
+            "nodeType": "VariableDeclaration",
+            "scope": 42,
+            "src": "200:27:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_CreateStudent_$151",
+              "typeString": "contract CreateStudent"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 36,
+              "name": "CreateStudent",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 151,
+              "src": "200:13:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_CreateStudent_$151",
+                "typeString": "contract CreateStudent"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 39,
+            "name": "tutor_class",
+            "nodeType": "VariableDeclaration",
+            "scope": 42,
+            "src": "235:23:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_CreateTutor_$328",
+              "typeString": "contract CreateTutor"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 38,
+              "name": "CreateTutor",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 328,
+              "src": "235:11:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_CreateTutor_$328",
+                "typeString": "contract CreateTutor"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 41,
+            "name": "invoice_class",
+            "nodeType": "VariableDeclaration",
+            "scope": 42,
+            "src": "264:30:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_InvoiceGenerator_$437",
+              "typeString": "contract InvoiceGenerator"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 40,
+              "name": "InvoiceGenerator",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 437,
+              "src": "264:16:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_InvoiceGenerator_$437",
+                "typeString": "contract InvoiceGenerator"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 43,
+        "src": "163:187:1"
+      }
+    ],
+    "src": "0:351:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-03-17T15:09:39.160Z"
+}

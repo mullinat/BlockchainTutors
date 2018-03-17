@@ -1,0 +1,2844 @@
+{
+  "contractName": "InvoiceGenerator",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "tmp_student",
+          "type": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint32"
+        },
+        {
+          "name": "_what_for",
+          "type": "string"
+        }
+      ],
+      "name": "create_invoice",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "invoice_number",
+          "type": "uint32"
+        },
+        {
+          "name": "_comment",
+          "type": "string"
+        }
+      ],
+      "name": "pay_invoice",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x60606040526000600160006101000a81548163ffffffff021916908363ffffffff160217905550341561003157600080fd5b6104e9806100406000396000f30060606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063b1526cea14610051578063b1a297fd146100dc575b600080fd5b341561005c57600080fd5b6100da600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803563ffffffff1690602001909190803590602001908201803590602001908080601f0160208091040260200160405190810160405280939291908181526020018383808284378201915050505050509190505061013d565b005b61013b600480803563ffffffff1690602001909190803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506102f8565b005b33600080600160009054906101000a900463ffffffff1663ffffffff1663ffffffff16815260200190815260200160002060000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555082600080600160009054906101000a900463ffffffff1663ffffffff1663ffffffff16815260200190815260200160002060010160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508163ffffffff16600080600160009054906101000a900463ffffffff1663ffffffff1663ffffffff1681526020019081526020016000206002018190555080600080600160009054906101000a900463ffffffff1663ffffffff1663ffffffff16815260200190815260200160002060030190805190602001906102a6929190610418565b506000806000600160009054906101000a900463ffffffff1663ffffffff1663ffffffff16815260200190815260200160002060050160006101000a81548160ff021916908315150217905550505050565b346000808463ffffffff1663ffffffff16815260200190815260200160002060020154111515610414576000808363ffffffff1663ffffffff16815260200190815260200160002060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc349081150290604051600060405180830381858888f1935050505015156103a357600080fd5b806000808463ffffffff1663ffffffff16815260200190815260200160002060040190805190602001906103d8929190610418565b5060016000808463ffffffff1663ffffffff16815260200190815260200160002060050160006101000a81548160ff0219169083151502179055505b5050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061045957805160ff1916838001178555610487565b82800160010185558215610487579182015b8281111561048657825182559160200191906001019061046b565b5b5090506104949190610498565b5090565b6104ba91905b808211156104b657600081600090555060010161049e565b5090565b905600a165627a7a7230582072868fe189a95c09b6eeec2c6c82a4d8898aa28da8d9647c9d556e4617ecd5440029",
+  "deployedBytecode": "0x60606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063b1526cea14610051578063b1a297fd146100dc575b600080fd5b341561005c57600080fd5b6100da600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803563ffffffff1690602001909190803590602001908201803590602001908080601f0160208091040260200160405190810160405280939291908181526020018383808284378201915050505050509190505061013d565b005b61013b600480803563ffffffff1690602001909190803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506102f8565b005b33600080600160009054906101000a900463ffffffff1663ffffffff1663ffffffff16815260200190815260200160002060000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555082600080600160009054906101000a900463ffffffff1663ffffffff1663ffffffff16815260200190815260200160002060010160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508163ffffffff16600080600160009054906101000a900463ffffffff1663ffffffff1663ffffffff1681526020019081526020016000206002018190555080600080600160009054906101000a900463ffffffff1663ffffffff1663ffffffff16815260200190815260200160002060030190805190602001906102a6929190610418565b506000806000600160009054906101000a900463ffffffff1663ffffffff1663ffffffff16815260200190815260200160002060050160006101000a81548160ff021916908315150217905550505050565b346000808463ffffffff1663ffffffff16815260200190815260200160002060020154111515610414576000808363ffffffff1663ffffffff16815260200190815260200160002060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc349081150290604051600060405180830381858888f1935050505015156103a357600080fd5b806000808463ffffffff1663ffffffff16815260200190815260200160002060040190805190602001906103d8929190610418565b5060016000808463ffffffff1663ffffffff16815260200190815260200160002060050160006101000a81548160ff0219169083151502179055505b5050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061045957805160ff1916838001178555610487565b82800160010185558215610487579182015b8281111561048657825182559160200191906001019061046b565b5b5090506104949190610498565b5090565b6104ba91905b808211156104b657600081600090555060010161049e565b5090565b905600a165627a7a7230582072868fe189a95c09b6eeec2c6c82a4d8898aa28da8d9647c9d556e4617ecd5440029",
+  "sourceMap": "26:1095:4:-;;;377:1;351:27;;;;;;;;;;;;;;;;;;;;26:1095;;;;;;;;;;;;;;",
+  "deployedSourceMap": "26:1095:4:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;384:380;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;769:350;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;384:380;518:10;484:8;:26;493:16;;;;;;;;;;;484:26;;;;;;;;;;;;;;;:31;;;:44;;;;;;;;;;;;;;;;;;578:11;538:8;:26;547:16;;;;;;;;;;;538:26;;;;;;;;;;;;;;;:37;;;:51;;;;;;;;;;;;;;;;;;635:7;599:43;;:8;:26;608:16;;;;;;;;;;;599:26;;;;;;;;;;;;;;;:33;;:43;;;;694:9;652:8;:26;661:16;;;;;;;;;;;652:26;;;;;;;;;;;;;;;:39;;:51;;;;;;;;;;;;:::i;:::-;;752:5;713:8;:26;722:16;;;;;;;;;;;713:26;;;;;;;;;;;;;;;:36;;;:44;;;;;;;;;;;;;;;;;;384:380;;;:::o;769:350::-;897:9;862:8;:24;871:14;862:24;;;;;;;;;;;;;;;:31;;;:44;;859:254;;;930:8;:24;939:14;930:24;;;;;;;;;;;;;;;:29;;;;;;;;;;;;:38;;:49;969:9;930:49;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1039:8;993;:24;1002:14;993:24;;;;;;;;;;;;;;;:43;;:54;;;;;;;;;;;;:::i;:::-;;1098:4;1061:8;:24;1070:14;1061:24;;;;;;;;;;;;;;;:34;;;:41;;;;;;;;;;;;;;;;;;859:254;769:350;;:::o;26:1095::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.16;\n\ncontract InvoiceGenerator {\n\n    struct Invoice \n    {\n        address from;//This user needs the money\n        address reciepient;//This person has to pay them\n        uint256 amount;\n        string from_comment;\n        string reciepient_comment;\n        bool completed;\n    }\n    mapping (uint32 => Invoice) invoices;\n    uint32 next_invoice_num = 0;\n    function create_invoice(address tmp_student, uint32 _amount, string _what_for) public\n    {\n        invoices[next_invoice_num].from = msg.sender;\n        invoices[next_invoice_num].reciepient = tmp_student;\n        invoices[next_invoice_num].amount = _amount;\n        invoices[next_invoice_num].from_comment = _what_for;\n        invoices[next_invoice_num].completed = false;\n    }\n    function pay_invoice(uint32 invoice_number, string _comment) public payable\n    {\n        if(invoices[invoice_number].amount <= msg.value)\n        {\n            invoices[invoice_number].from.transfer(msg.value);\n            invoices[invoice_number].reciepient_comment = _comment;\n            invoices[invoice_number].completed = true;\n        }\n    }\n}\n",
+  "sourcePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/InvoiceGenerator/InvoiceGenerator.sol",
+  "ast": {
+    "absolutePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/InvoiceGenerator/InvoiceGenerator.sol",
+    "exportedSymbols": {
+      "InvoiceGenerator": [
+        437
+      ]
+    },
+    "id": 438,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 330,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:4"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 437,
+        "linearizedBaseContracts": [
+          437
+        ],
+        "name": "InvoiceGenerator",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "InvoiceGenerator.Invoice",
+            "id": 343,
+            "members": [
+              {
+                "constant": false,
+                "id": 332,
+                "name": "from",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "89:12:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 331,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "89:7:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 334,
+                "name": "reciepient",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "138:18:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 333,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "138:7:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 336,
+                "name": "amount",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "195:14:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 335,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "195:7:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 338,
+                "name": "from_comment",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "219:19:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string storage pointer"
+                },
+                "typeName": {
+                  "id": 337,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "219:6:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string storage pointer"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 340,
+                "name": "reciepient_comment",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "248:25:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string storage pointer"
+                },
+                "typeName": {
+                  "id": 339,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "248:6:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string storage pointer"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 342,
+                "name": "completed",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "283:14:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 341,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "283:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Invoice",
+            "nodeType": "StructDefinition",
+            "scope": 437,
+            "src": "59:245:4",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 347,
+            "name": "invoices",
+            "nodeType": "VariableDeclaration",
+            "scope": 437,
+            "src": "309:36:4",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+              "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+            },
+            "typeName": {
+              "id": 346,
+              "keyType": {
+                "id": 344,
+                "name": "uint32",
+                "nodeType": "ElementaryTypeName",
+                "src": "318:6:4",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "309:27:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 345,
+                "name": "Invoice",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 343,
+                "src": "328:7:4",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Invoice_$343_storage_ptr",
+                  "typeString": "struct InvoiceGenerator.Invoice storage pointer"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 350,
+            "name": "next_invoice_num",
+            "nodeType": "VariableDeclaration",
+            "scope": 437,
+            "src": "351:27:4",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint32",
+              "typeString": "uint32"
+            },
+            "typeName": {
+              "id": 348,
+              "name": "uint32",
+              "nodeType": "ElementaryTypeName",
+              "src": "351:6:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint32",
+                "typeString": "uint32"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30",
+              "id": 349,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "377:1:4",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 395,
+              "nodeType": "Block",
+              "src": "474:290:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 365,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 359,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "484:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 361,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 360,
+                          "name": "next_invoice_num",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 350,
+                          "src": "493:16:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "484:26:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 362,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "from",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 332,
+                      "src": "484:31:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 363,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 506,
+                        "src": "518:3:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 364,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "518:10:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "484:44:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 366,
+                  "nodeType": "ExpressionStatement",
+                  "src": "484:44:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 372,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 367,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "538:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 369,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 368,
+                          "name": "next_invoice_num",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 350,
+                          "src": "547:16:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "538:26:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 370,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "reciepient",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 334,
+                      "src": "538:37:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 371,
+                      "name": "tmp_student",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 352,
+                      "src": "578:11:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "538:51:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 373,
+                  "nodeType": "ExpressionStatement",
+                  "src": "538:51:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 379,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 374,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "599:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 376,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 375,
+                          "name": "next_invoice_num",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 350,
+                          "src": "608:16:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "599:26:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 377,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "amount",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 336,
+                      "src": "599:33:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 378,
+                      "name": "_amount",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 354,
+                      "src": "635:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      }
+                    },
+                    "src": "599:43:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 380,
+                  "nodeType": "ExpressionStatement",
+                  "src": "599:43:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 386,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 381,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "652:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 383,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 382,
+                          "name": "next_invoice_num",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 350,
+                          "src": "661:16:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "652:26:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 384,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "from_comment",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 338,
+                      "src": "652:39:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 385,
+                      "name": "_what_for",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 356,
+                      "src": "694:9:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "652:51:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 387,
+                  "nodeType": "ExpressionStatement",
+                  "src": "652:51:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 393,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 388,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "713:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 390,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 389,
+                          "name": "next_invoice_num",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 350,
+                          "src": "722:16:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "713:26:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 391,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "completed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 342,
+                      "src": "713:36:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "66616c7365",
+                      "id": 392,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "752:5:4",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "false"
+                    },
+                    "src": "713:44:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 394,
+                  "nodeType": "ExpressionStatement",
+                  "src": "713:44:4"
+                }
+              ]
+            },
+            "id": 396,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "create_invoice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 357,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 352,
+                  "name": "tmp_student",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 396,
+                  "src": "408:19:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 351,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "408:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 354,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 396,
+                  "src": "429:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 353,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "429:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 356,
+                  "name": "_what_for",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 396,
+                  "src": "445:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string memory"
+                  },
+                  "typeName": {
+                    "id": 355,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "445:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "407:55:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 358,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "474:0:4"
+            },
+            "scope": 437,
+            "src": "384:380:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 435,
+              "nodeType": "Block",
+              "src": "849:270:4",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 409,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 403,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "862:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 405,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 404,
+                          "name": "invoice_number",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 398,
+                          "src": "871:14:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "862:24:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 406,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "amount",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 336,
+                      "src": "862:31:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 407,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 506,
+                        "src": "897:3:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 408,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "value",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "897:9:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "862:44:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 434,
+                  "nodeType": "IfStatement",
+                  "src": "859:254:4",
+                  "trueBody": {
+                    "id": 433,
+                    "nodeType": "Block",
+                    "src": "916:197:4",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 415,
+                                "name": "msg",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 506,
+                                "src": "969:3:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_message",
+                                  "typeString": "msg"
+                                }
+                              },
+                              "id": 416,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "value",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": null,
+                              "src": "969:9:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "baseExpression": {
+                                  "argumentTypes": null,
+                                  "id": 410,
+                                  "name": "invoices",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 347,
+                                  "src": "930:8:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                                    "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                                  }
+                                },
+                                "id": 412,
+                                "indexExpression": {
+                                  "argumentTypes": null,
+                                  "id": 411,
+                                  "name": "invoice_number",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 398,
+                                  "src": "939:14:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint32",
+                                    "typeString": "uint32"
+                                  }
+                                },
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "IndexAccess",
+                                "src": "930:24:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                                  "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                                }
+                              },
+                              "id": 413,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "from",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 332,
+                              "src": "930:29:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            "id": 414,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "transfer",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "930:38:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_transfer_nonpayable$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256)"
+                            }
+                          },
+                          "id": 417,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "930:49:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 418,
+                        "nodeType": "ExpressionStatement",
+                        "src": "930:49:4"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 424,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 419,
+                                "name": "invoices",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 347,
+                                "src": "993:8:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                                  "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                                }
+                              },
+                              "id": 421,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 420,
+                                "name": "invoice_number",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 398,
+                                "src": "1002:14:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint32",
+                                  "typeString": "uint32"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "993:24:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                                "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                              }
+                            },
+                            "id": 422,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "reciepient_comment",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 340,
+                            "src": "993:43:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_storage",
+                              "typeString": "string storage ref"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "id": 423,
+                            "name": "_comment",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 400,
+                            "src": "1039:8:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          "src": "993:54:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string storage ref"
+                          }
+                        },
+                        "id": 425,
+                        "nodeType": "ExpressionStatement",
+                        "src": "993:54:4"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 431,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 426,
+                                "name": "invoices",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 347,
+                                "src": "1061:8:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                                  "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                                }
+                              },
+                              "id": 428,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 427,
+                                "name": "invoice_number",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 398,
+                                "src": "1070:14:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint32",
+                                  "typeString": "uint32"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "1061:24:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                                "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                              }
+                            },
+                            "id": 429,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "completed",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 342,
+                            "src": "1061:34:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "hexValue": "74727565",
+                            "id": 430,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "bool",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1098:4:4",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            },
+                            "value": "true"
+                          },
+                          "src": "1061:41:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "id": 432,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1061:41:4"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "id": 436,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "pay_invoice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 401,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 398,
+                  "name": "invoice_number",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 436,
+                  "src": "790:21:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 397,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "790:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 400,
+                  "name": "_comment",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 436,
+                  "src": "813:15:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string memory"
+                  },
+                  "typeName": {
+                    "id": 399,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "813:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "789:40:4"
+            },
+            "payable": true,
+            "returnParameters": {
+              "id": 402,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "849:0:4"
+            },
+            "scope": 437,
+            "src": "769:350:4",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 438,
+        "src": "26:1095:4"
+      }
+    ],
+    "src": "0:1122:4"
+  },
+  "legacyAST": {
+    "absolutePath": "/media/paul/2TBDrive/Projects2018/BlockchainTutors/TruffleWorkspace/contracts/InvoiceGenerator/InvoiceGenerator.sol",
+    "exportedSymbols": {
+      "InvoiceGenerator": [
+        437
+      ]
+    },
+    "id": 438,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 330,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:4"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 437,
+        "linearizedBaseContracts": [
+          437
+        ],
+        "name": "InvoiceGenerator",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "InvoiceGenerator.Invoice",
+            "id": 343,
+            "members": [
+              {
+                "constant": false,
+                "id": 332,
+                "name": "from",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "89:12:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 331,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "89:7:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 334,
+                "name": "reciepient",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "138:18:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 333,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "138:7:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 336,
+                "name": "amount",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "195:14:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 335,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "195:7:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 338,
+                "name": "from_comment",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "219:19:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string storage pointer"
+                },
+                "typeName": {
+                  "id": 337,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "219:6:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string storage pointer"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 340,
+                "name": "reciepient_comment",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "248:25:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string storage pointer"
+                },
+                "typeName": {
+                  "id": 339,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "248:6:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string storage pointer"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 342,
+                "name": "completed",
+                "nodeType": "VariableDeclaration",
+                "scope": 343,
+                "src": "283:14:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 341,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "283:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Invoice",
+            "nodeType": "StructDefinition",
+            "scope": 437,
+            "src": "59:245:4",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 347,
+            "name": "invoices",
+            "nodeType": "VariableDeclaration",
+            "scope": 437,
+            "src": "309:36:4",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+              "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+            },
+            "typeName": {
+              "id": 346,
+              "keyType": {
+                "id": 344,
+                "name": "uint32",
+                "nodeType": "ElementaryTypeName",
+                "src": "318:6:4",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "309:27:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 345,
+                "name": "Invoice",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 343,
+                "src": "328:7:4",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Invoice_$343_storage_ptr",
+                  "typeString": "struct InvoiceGenerator.Invoice storage pointer"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 350,
+            "name": "next_invoice_num",
+            "nodeType": "VariableDeclaration",
+            "scope": 437,
+            "src": "351:27:4",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint32",
+              "typeString": "uint32"
+            },
+            "typeName": {
+              "id": 348,
+              "name": "uint32",
+              "nodeType": "ElementaryTypeName",
+              "src": "351:6:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint32",
+                "typeString": "uint32"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30",
+              "id": 349,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "377:1:4",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 395,
+              "nodeType": "Block",
+              "src": "474:290:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 365,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 359,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "484:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 361,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 360,
+                          "name": "next_invoice_num",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 350,
+                          "src": "493:16:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "484:26:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 362,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "from",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 332,
+                      "src": "484:31:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 363,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 506,
+                        "src": "518:3:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 364,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "518:10:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "484:44:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 366,
+                  "nodeType": "ExpressionStatement",
+                  "src": "484:44:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 372,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 367,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "538:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 369,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 368,
+                          "name": "next_invoice_num",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 350,
+                          "src": "547:16:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "538:26:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 370,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "reciepient",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 334,
+                      "src": "538:37:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 371,
+                      "name": "tmp_student",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 352,
+                      "src": "578:11:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "538:51:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 373,
+                  "nodeType": "ExpressionStatement",
+                  "src": "538:51:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 379,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 374,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "599:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 376,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 375,
+                          "name": "next_invoice_num",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 350,
+                          "src": "608:16:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "599:26:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 377,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "amount",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 336,
+                      "src": "599:33:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 378,
+                      "name": "_amount",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 354,
+                      "src": "635:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      }
+                    },
+                    "src": "599:43:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 380,
+                  "nodeType": "ExpressionStatement",
+                  "src": "599:43:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 386,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 381,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "652:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 383,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 382,
+                          "name": "next_invoice_num",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 350,
+                          "src": "661:16:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "652:26:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 384,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "from_comment",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 338,
+                      "src": "652:39:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 385,
+                      "name": "_what_for",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 356,
+                      "src": "694:9:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "652:51:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 387,
+                  "nodeType": "ExpressionStatement",
+                  "src": "652:51:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 393,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 388,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "713:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 390,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 389,
+                          "name": "next_invoice_num",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 350,
+                          "src": "722:16:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "713:26:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 391,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "completed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 342,
+                      "src": "713:36:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "66616c7365",
+                      "id": 392,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "752:5:4",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "false"
+                    },
+                    "src": "713:44:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 394,
+                  "nodeType": "ExpressionStatement",
+                  "src": "713:44:4"
+                }
+              ]
+            },
+            "id": 396,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "create_invoice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 357,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 352,
+                  "name": "tmp_student",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 396,
+                  "src": "408:19:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 351,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "408:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 354,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 396,
+                  "src": "429:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 353,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "429:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 356,
+                  "name": "_what_for",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 396,
+                  "src": "445:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string memory"
+                  },
+                  "typeName": {
+                    "id": 355,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "445:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "407:55:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 358,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "474:0:4"
+            },
+            "scope": 437,
+            "src": "384:380:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 435,
+              "nodeType": "Block",
+              "src": "849:270:4",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 409,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 403,
+                          "name": "invoices",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 347,
+                          "src": "862:8:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                            "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                          }
+                        },
+                        "id": 405,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 404,
+                          "name": "invoice_number",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 398,
+                          "src": "871:14:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "862:24:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                          "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                        }
+                      },
+                      "id": 406,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "amount",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 336,
+                      "src": "862:31:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 407,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 506,
+                        "src": "897:3:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 408,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "value",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "897:9:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "862:44:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 434,
+                  "nodeType": "IfStatement",
+                  "src": "859:254:4",
+                  "trueBody": {
+                    "id": 433,
+                    "nodeType": "Block",
+                    "src": "916:197:4",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 415,
+                                "name": "msg",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 506,
+                                "src": "969:3:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_message",
+                                  "typeString": "msg"
+                                }
+                              },
+                              "id": 416,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "value",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": null,
+                              "src": "969:9:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "baseExpression": {
+                                  "argumentTypes": null,
+                                  "id": 410,
+                                  "name": "invoices",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 347,
+                                  "src": "930:8:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                                    "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                                  }
+                                },
+                                "id": 412,
+                                "indexExpression": {
+                                  "argumentTypes": null,
+                                  "id": 411,
+                                  "name": "invoice_number",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 398,
+                                  "src": "939:14:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint32",
+                                    "typeString": "uint32"
+                                  }
+                                },
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "IndexAccess",
+                                "src": "930:24:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                                  "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                                }
+                              },
+                              "id": 413,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "from",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 332,
+                              "src": "930:29:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            "id": 414,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "transfer",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "930:38:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_transfer_nonpayable$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256)"
+                            }
+                          },
+                          "id": 417,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "930:49:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 418,
+                        "nodeType": "ExpressionStatement",
+                        "src": "930:49:4"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 424,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 419,
+                                "name": "invoices",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 347,
+                                "src": "993:8:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                                  "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                                }
+                              },
+                              "id": 421,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 420,
+                                "name": "invoice_number",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 398,
+                                "src": "1002:14:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint32",
+                                  "typeString": "uint32"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "993:24:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                                "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                              }
+                            },
+                            "id": 422,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "reciepient_comment",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 340,
+                            "src": "993:43:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_storage",
+                              "typeString": "string storage ref"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "id": 423,
+                            "name": "_comment",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 400,
+                            "src": "1039:8:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          "src": "993:54:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string storage ref"
+                          }
+                        },
+                        "id": 425,
+                        "nodeType": "ExpressionStatement",
+                        "src": "993:54:4"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 431,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 426,
+                                "name": "invoices",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 347,
+                                "src": "1061:8:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Invoice_$343_storage_$",
+                                  "typeString": "mapping(uint32 => struct InvoiceGenerator.Invoice storage ref)"
+                                }
+                              },
+                              "id": 428,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 427,
+                                "name": "invoice_number",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 398,
+                                "src": "1070:14:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint32",
+                                  "typeString": "uint32"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "1061:24:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Invoice_$343_storage",
+                                "typeString": "struct InvoiceGenerator.Invoice storage ref"
+                              }
+                            },
+                            "id": 429,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "completed",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 342,
+                            "src": "1061:34:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "hexValue": "74727565",
+                            "id": 430,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "bool",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1098:4:4",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            },
+                            "value": "true"
+                          },
+                          "src": "1061:41:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "id": 432,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1061:41:4"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "id": 436,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "pay_invoice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 401,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 398,
+                  "name": "invoice_number",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 436,
+                  "src": "790:21:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 397,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "790:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 400,
+                  "name": "_comment",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 436,
+                  "src": "813:15:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string memory"
+                  },
+                  "typeName": {
+                    "id": 399,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "813:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "789:40:4"
+            },
+            "payable": true,
+            "returnParameters": {
+              "id": 402,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "849:0:4"
+            },
+            "scope": 437,
+            "src": "769:350:4",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 438,
+        "src": "26:1095:4"
+      }
+    ],
+    "src": "0:1122:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-03-17T15:09:39.171Z"
+}
