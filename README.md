@@ -1,5 +1,5 @@
 # BlockchainTutors
-<code>
+<text>
 Find a Tutor on the Ethereum Blockchain
 
 The goal of this project is to look up and connect with 
@@ -19,4 +19,4 @@ Back end features to implement next:
     Technically a back end defeats the purpose of a dapp right?
 Features to implement in the far future:
     Encrypted messaging between users on the blockchain or maybe another plaform using public keys
-</code>
+</text>
