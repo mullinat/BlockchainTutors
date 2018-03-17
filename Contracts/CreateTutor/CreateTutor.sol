@@ -3,47 +3,54 @@ contract CreateTutor {
     
     struct Tutor {
         string name;
-        string capable_of_tutoring;
+        string capableOfTutoring;
         string website;
-        string ipfs_link;
+        string ipfsLink;
         string email;
         uint balance;
     }
 
     mapping (address => Tutor) public tutors;
+    mapping (uint32 => address) public tutors_lookup;
+    uint32 public current_numbner_of_tutors = 0;
     address public owner;
+    
+    
     function CreateTutor() public {
         owner = msg.sender;
     }
-    function CreateNewTutor(
-        string tmp_name,
-        string tmp_capable_of_tutoring,
-        string tmp_website,
-        string tmp_ipfs_link,
-        string tmp_email
+    function createNewTutor(
+        string tmpName,
+        string tmpCapableOfTutoring,
+        string tmpWebsite,
+        string tmpIpfsLink,
+        string tmpEmail
     ) public payable
     {
-        var tmp_tutor = tutors[msg.sender];
-        tmp_tutor.name = tmp_name;
-        tmp_tutor.capable_of_tutoring = tmp_capable_of_tutoring;
-        tmp_tutor.website = tmp_website;
-        tmp_tutor.ipfs_link = tmp_ipfs_link;
-        tmp_tutor.email = tmp_email;
-        tmp_tutor.balance = 0;
+        var tmpTutor = tutors[msg.sender];
+        tmpTutor.name = tmpName;
+        tmpTutor.capableOfTutoring = tmpCapableOfTutoring;
+        tmpTutor.website = tmpWebsite;
+        tmpTutor.ipfsLink = tmpIpfsLink;
+        tmpTutor.email = tmpEmail;
+        tmpTutor.balance = 0;
+        tutors_lookup[current_numbner_of_tutors] = msg.sender;
+        current_numbner_of_tutors = current_numbner_of_tutors + 1;
+
     }
-    function set_name(string tmp_name) public {
-        tutors[msg.sender].name = tmp_name;
+    function setName(string tmpName) public {
+        tutors[msg.sender].name = tmpName;
     }  
-    function set_capable_of_tutoring(string tmp_capable_of_tutoring) public {
-        tutors[msg.sender].capable_of_tutoring = tmp_capable_of_tutoring;
+    function setCapableOfTutoring(string tmpCapableOfTutoring) public {
+        tutors[msg.sender].capableOfTutoring = tmpCapableOfTutoring;
     }  
-    function set_website(string tmp_website) public {
-        tutors[msg.sender].website = tmp_website;
+    function setWebsite(string tmpWebsite) public {
+        tutors[msg.sender].website = tmpWebsite;
     }  
-    function set_ipfs_link(string tmp_ipfs_link) public {
-        tutors[msg.sender].ipfs_link = tmp_ipfs_link;
+    function setIpfsLink(string tmpIpfsLink) public {
+        tutors[msg.sender].ipfsLink = tmpIpfsLink;
     }  
-    function set_email(string tmp_email) public {
-        tutors[msg.sender].email = tmp_email;
+    function setEmail(string tmpEmail) public {
+        tutors[msg.sender].email = tmpEmail;
     }
 }
