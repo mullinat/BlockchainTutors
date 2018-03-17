@@ -45,8 +45,6 @@ function CreateTutor() {
 }
 
 function UpdateTutor(tmpID){
-    console.log("SOMETHING HAPPENS");
-    console.log(tmpID);
     switch(tmpID){
         case "tutor_name":
             MyContract.setName(document.getElementById(tmpID).value, function(){console.log("Ummm what now?")});
@@ -66,5 +64,4 @@ function UpdateTutor(tmpID){
         default:
             console.log("Something went wrong");
     }
-    console.log("OK we got somewhere")
 }
