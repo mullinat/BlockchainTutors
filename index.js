@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
-var fs = require('fs');
-var mustache = require('mustache');//This is currently not used but will be in the future
-
-// routes
+const fs = require('fs');
+const mustache = require('mustache');//This is currently not used but will be in the future
+const ip = require("ip");// ip.address() 
 app.use('/src', express.static('src'));
 app.get('/', function (req, res) {
     fs.readFile('./templates/index.mustache', 'utf8', (err, data) => {
