@@ -1,4 +1,4 @@
-<div id="tutor search">
+<div id="tutor_search">
     <p>First we need to index the blockchain for available tutors</p>
     <p>You can do so by clicking the button below, check the conse after for more info</p>
     <button onclick="javascript:index_tutors();">Index Tutors On Blockchain</button>
@@ -6,3 +6,12 @@
     <input type="text" id="tutor_search_box">
     <button onclick="javascript:console.log(search_tutor())">Search Tutors</button>
 </div>
+
+<div class="grid-container" id="search_results">
+    <div><p>Name</p></div>
+    <div><p>Website</p></div>
+    <div><p>IPFS</p></div>
+    <div><p>email</p></div>
+    <div><p>id#</p></div>
+</div>
+<p id="no_search_yet">Your Search Result Will Appear Here</p>
