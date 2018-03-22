@@ -43,3 +43,26 @@ function index_tutors(){
     console.log("index_tutors() Ran Successfully");
     console.log("tutors_index is a list and has all the tutors in the blockchain on it");
 }
+
+function search_tutor(){
+    search_tutor_subject(document.getElementById("tutor_search_box").value);
+}
+vaid_subject_indicies = []
+function search_tutor_subject(search_tutor_subject){
+    //console.log("TESTTESTTEST");
+    //console.log(tutors_index.length);
+    vaid_subject_indicies = []
+    for (var i = 0; i < tutors_index.length; i++){
+        console.log("search_tutor funcrtion should do someththing now...");
+        var current_index  = tutors_index[i][1].toLowerCase();
+        console.log("current_index " + current_index);
+        if(current_index.includes(search_tutor_subject)){
+            console.log("I is equal to " + i);
+            vaid_subject_indicies.push(i);
+        }
+    }
+}
+
+function search_tutor(){
+    search_tutor_subject(document.getElementById("tutor_search_box").value);
+}
