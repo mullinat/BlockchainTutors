@@ -12,22 +12,40 @@ contract InvoiceGenerator {
         bool completed;
     }
     mapping (uint32 => Invoice) invoices;
+    mapping (address => uint32[]) from_invoice_lookup;
+    mapping (address => uint32[]) reciepient_invoice_lookup;
+    mapping (address => uint256) balances;
     uint32 next_invoice_num = 0;
-    function create_invoice(address tmp_student, uint32 _amount, string _what_for) public
+    function create_invoice(address tmp_student, uint256 _amount, string _what_for) public
     {
         invoices[next_invoice_num].from = msg.sender;
         invoices[next_invoice_num].reciepient = tmp_student;
         invoices[next_invoice_num].amount = _amount;
         invoices[next_invoice_num].from_comment = _what_for;
         invoices[next_invoice_num].completed = false;
+        from_invoice_lookup[msg.sender].push(next_invoice_num);
+        reciepient_invoice_lookup[tmp_student].push(next_invoice_num);
+        next_invoice_num = next_invoice_num + 1;
     }
-    function pay_invoice(uint32 invoice_number, string _comment) public payable
+    function update_balance() public payable{
+        balances[msg.sender] += msg.value;
+    }
+    function withdrawl(uint256 _amount, address _reciever) public {
+        if(_amount <= balances[msg.sender]){
+            balances[msg.sender] = balances[msg.sender] - _amount;
+            _reciever.transfer(_amount);
+        }
+    }
+    function pay_invoice(uint32 _invoice_number, string _comment) public
     {
-        if(invoices[invoice_number].amount <= msg.value)
-        {
-            invoices[invoice_number].from.transfer(msg.value);
-            invoices[invoice_number].reciepient_comment = _comment;
-            invoices[invoice_number].completed = true;
+        if(msg.sender == invoices[_invoice_number].reciepient ){
+            if(invoices[_invoice_number].amount <= balances[msg.sender])
+            {
+                balances[msg.sender] -= invoices[_invoice_number].amount;
+                balances[invoices[_invoice_number].from] += invoices[_invoice_number].amount;
+                invoices[_invoice_number].reciepient_comment = _comment;
+                invoices[_invoice_number].completed = true;
+            }
         }
     }
 }
