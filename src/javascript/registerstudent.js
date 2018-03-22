@@ -1,4 +1,3 @@
-var address = '0xb9b13bf3a4312e9b3fc46397127339fce4d4df0f';
 var MyContractABI;
 var MyContract;
 var StudentInformation;
@@ -6,6 +5,14 @@ $.getJSON("./abi/CreateStudent.json", function (result) {
     //console.log(result);
     //console.log(field);
     MyContractABI = result;
+    var tmp_networks = [];
+    for (var i in MyContractABI.networks){
+        tmp_networks.push(i);
+    }
+    console.log("tmp_networks = " + tmp_networks);
+    console.log(tmp_networks[tmp_networks.length-1]);
+    var tmp_the_correct_network = tmp_networks[tmp_networks.length-1];
+    var address = MyContractABI.networks[tmp_the_correct_network].address;
     MyContract = web3.eth.contract(MyContractABI.abi).at(address);
     MyContract.students(web3.eth.coinbase, function (err, result) {
         //console.log(result);
