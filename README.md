@@ -22,7 +22,7 @@ Features to implement next:
 Front end features to implement next:
     Update the UI with bootstrap
 Escrow system:
-    Holy ETH or token until tutoring has occoured
+    Hold ETH or token until tutoring has occoured
 Back end features to implement next:
     Create a back end to start with, so decide on a database
     Decide what goes in database and create a schema:
