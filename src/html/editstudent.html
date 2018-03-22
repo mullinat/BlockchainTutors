@@ -2,13 +2,24 @@
     <p>Existing Student information is below</p>
 </div>
 <br>
+<hr>
+<br>
 <p>You can also edit your information below:</p>
 <form action="javascript:CreateStudent()">
     Name:
-    <input type="text" id="student_name"><input type="button" value="Send To Blockchain" onclick="javascript:UpdateStudent('student_name')">
+    <input type="text" id="student_name">
+    <input type="button" value="Send To Blockchain" onclick="javascript:UpdateStudent('student_name')">
     <br> Tutoring Subjects:
-    <input type="text" id="student_subjects"><input type="button" value="Send To Blockchain" onclick="javascript:UpdateStudent('student_subjects')">
+    <input type="text" id="student_subjects">
+    <input type="button" value="Send To Blockchain" onclick="javascript:UpdateStudent('student_subjects')">
     <br> email:
-    <input type="text" id="student_email"><input type="button" value="Send To Blockchain" onclick="javascript:UpdateStudent('student_email')">
+    <input type="text" id="student_email">
+    <input type="button" value="Send To Blockchain" onclick="javascript:UpdateStudent('student_email')">
     <br>
 </form>
+<br>
+<hr>
+<br>
+<div id="tutor_search">
+    <button onclick="javascript:find_a_tutor();">Find A Tutor</button>
+</div>
