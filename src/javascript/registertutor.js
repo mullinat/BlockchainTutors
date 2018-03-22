@@ -1,4 +1,3 @@
-var address = '0x3913a50ef1881417e3c73ccb8d1caa9b9d5c6d7a';
 var MyContractABI;
 var MyContract;
 var TutorInformation;
@@ -6,6 +5,14 @@ $.getJSON("./abi/CreateTutor.json", function (result) {
     //console.log(result);
     //console.log(field);
     MyContractABI = result;
+    var tmp_networks = [];
+    for (var i in MyContractABI.networks){
+        tmp_networks.push(i);
+    }
+    console.log("tmp_networks = " + tmp_networks);
+    console.log(tmp_networks[tmp_networks.length-1]);
+    var tmp_the_correct_network = tmp_networks[tmp_networks.length-1];
+    var address = MyContractABI.networks[tmp_the_correct_network].address;
     MyContract = web3.eth.contract(MyContractABI.abi).at(address);
     MyContract.tutors(web3.eth.coinbase, function (err, result) {
         //console.log(result);
