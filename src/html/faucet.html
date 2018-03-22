@@ -3,15 +3,15 @@
 <html>
 
 <head>
-    <script src="./web3.js"></script>
-    <script src="./jquery.min.js"></script>
+    <script src="/src/web3.js"></script>
+    <script src="/src/jquery.min.js"></script>
 </head>
 
 <body>
     <h1>Check the console</h1>
-    <a href="./web3.js">Should link to web3.js</a>
+    <a href="/src/web3.js">Should link to web3.js</a>
     <br>
-    <a href="./CreateTutor.js">Should link to CreateTutor.js</a>
+    <a href="/src/CreateTutor.js">Should link to CreateTutor.js</a>
     <br>
     <form name="1 ETH Faucet" action="javascript:Send_One_To()">
         Input eth address here:
@@ -28,7 +28,7 @@
 
 <script>
     var web3 = new Web3();
-    web3.setProvider(new web3.providers.HttpProvider("http://localhost:8545"));
+    web3.setProvider(new web3.providers.HttpProvider("http://localhost:5555"));
 
     function TestConnected() {
         console.log("Is connected = " + web3.isConnected() + "\n");
@@ -47,20 +47,21 @@
         })
     }
 
-    function SendEther() {
+    function SendEther(reciever) {
         var sender = web3.eth.accounts[7];
-        var receiver = "0xA82Eb789De07b0C12e41eDab285aEB014b754527";
         var amount = web3.toWei(1, "ether");
         web3.eth.sendTransaction({
             from: web3.eth.accounts[7],
-            to: eth.accounts[1],
-            value: web3.toWei(0.05, "ether")
-        })
-        return (amount + " sent from " + sender + "to " + receiver);
+            to: reciever,
+            value: web3.toWei(1, "ether")
+        });
+        console.log(amount + " sent from " + sender + "to " + reciever);
     }
 
     function Send_One_To() {
-        console.log(document.getElementById("one_eth_address").value);
+        var reciever = document.getElementById("one_eth_address").value;
+        console.log(reciever);
+        SendEther(reciever);
     }
     for (i = 0; i < 10; i++) {
         $("ol").append("<li>" + web3.eth.accounts[i] + " has " +
