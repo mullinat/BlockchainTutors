@@ -11,13 +11,12 @@ contract InvoiceGenerator {
         string reciepient_comment;
         bool completed;
     }
-    mapping (uint32 => Invoice) invoices;
-    mapping (address => uint32[]) from_invoice_lookup;
-    mapping (address => uint32[]) reciepient_invoice_lookup;
-    mapping (address => uint256) balances;
+    mapping (uint32 => Invoice) public invoices;
+    mapping (address => uint32[]) public from_invoice_lookup;
+    mapping (address => uint32[]) public reciepient_invoice_lookup;
+    mapping (address => uint256) public balances;
     uint32 next_invoice_num = 0;
-    function create_invoice(address tmp_student, uint256 _amount, string _what_for) public
-    {
+    function create_invoice(address tmp_student, uint256 _amount, string _what_for) public {
         invoices[next_invoice_num].from = msg.sender;
         invoices[next_invoice_num].reciepient = tmp_student;
         invoices[next_invoice_num].amount = _amount;
@@ -35,9 +34,9 @@ contract InvoiceGenerator {
             balances[msg.sender] = balances[msg.sender] - _amount;
             _reciever.transfer(_amount);
         }
+        msg.sender.transfer(_amount);
     }
-    function pay_invoice(uint32 _invoice_number, string _comment) public
-    {
+    function pay_invoice(uint32 _invoice_number, string _comment) public {
         if(msg.sender == invoices[_invoice_number].reciepient ){
             if(invoices[_invoice_number].amount <= balances[msg.sender])
             {

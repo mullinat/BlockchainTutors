@@ -57,7 +57,6 @@ $.getJSON("./abi/CreateTutor.json", function (result) {
 
 var GenerateInvoiceABI;
 var GenerateInvoice;
-var TutorInformation;
 $.getJSON("./abi/InvoiceGenerator.json", function (result) {
     //console.log(result);
     //console.log(field);

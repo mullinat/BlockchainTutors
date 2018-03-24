@@ -1,15 +1,86 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8" />
-        <script src="./src/jquery.min.js"></script>
-        <script src="./src/javascript/testmetamask.js"></script>
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <script src="./src/jquery.min.js"></script>
+    <script src="./src/javascript/testmetamask.js"></script>
+</head>
 
 <body>
-    <h1>Your Balance</h1>
+    <h1>Your Balance is displayed below</h1>
     <br>
+    <p id="your_balance">Looks like there was a problem getting your balance</p>
+    <h1>You can add to your Balance Below</h1>
+    <input type="number" id="add_to_balance">
+    <input type="button" id="add_to_balance_button" value="Send to Invoice Contract" onclick="javascript:add_to_balance_button()">
+    <h1>If you have a balance you can withdrawl from the smart contract into your address</h1>
+    <input type="number" id="withdrawl_amount">
+    <input type="button" id="withdrawl_button" value="Withdrawl from Invoice Contract" onclick="javascript:withdrawl_amount_button()">
 </body>
+<script>
+    var GenerateInvoiceABI;
+    var GenerateInvoiceAddress;
+    var GenerateInvoice;
+    $.getJSON("./abi/InvoiceGenerator.json", function (result) {
+        //console.log(result);
+        //console.log(field);
+        GenerateInvoiceABI = result;
+        var tmp_networks = [];
+        for (var i in GenerateInvoiceABI.networks) {
+            tmp_networks.push(i);
+        }
+        //console.log("tmp_networks = " + tmp_networks);
+        //console.log(tmp_networks[tmp_networks.length - 1]);
+        var tmp_the_correct_network = tmp_networks[tmp_networks.length - 1];
+        GenerateInvoiceAddress = GenerateInvoiceABI.networks[tmp_the_correct_network].address;
+        GenerateInvoice = web3.eth.contract(GenerateInvoiceABI.abi).at(GenerateInvoiceAddress);
+        UpdateBalance()
+    });
+
+    function UpdateBalance() {
+        GenerateInvoice.balances(web3.eth.coinbase, function (err, result) {
+            console.log(result["c"][0]);
+            if (result["c"][0] == 0) {
+                document.getElementById("your_balance").innerHTML = "Looks like your account is empty";
+            } else {
+                document.getElementById("your_balance").innerHTML = "The accounts balance is " + result["c"][0] /
+                    10000 +
+                    "ETH";
+            }
+        });
+    }
+
+    function add_to_balance(_amount) {
+        GenerateInvoice.update_balance({
+            from: web3.eth.coinbase,
+            value: web3.toWei(_amount, "ether")
+        }, function (err, result) {
+            console.log(result);
+        })
+    }
+
+    function add_to_balance_button() {
+        add_to_balance($("#add_to_balance").val());
+        $("#add_to_balance").val(0);
+    }
+
+    function withdrawl_amount(_amount) {
+        console.log(_amount);
+        console.log(web3.toWei(_amount));
+        GenerateInvoice.withdrawl(web3.toWei(_amount), web3.eth.coinbase, function (err, result) {
+            console.log(result);
+        })
+    }
+
+    function withdrawl_amount_button() {
+        //console.log(typeof(parseInt($("#withdrawl_amount").val())));
+        withdrawl_amount(parseInt($("#withdrawl_amount").val()));
+    }
+
+    function get_contract_balance(){
+        web3.eth.getBalance(GenerateInvoiceAddress, function(err, result){console.log(result["c"][0]/10000)})
+    }
+</script>
 
 </html>
