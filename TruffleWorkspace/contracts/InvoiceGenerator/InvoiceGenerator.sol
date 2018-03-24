@@ -34,7 +34,6 @@ contract InvoiceGenerator {
             balances[msg.sender] = balances[msg.sender] - _amount;
             _reciever.transfer(_amount);
         }
-        msg.sender.transfer(_amount);
     }
     function pay_invoice(uint32 _invoice_number, string _comment) public {
         if(msg.sender == invoices[_invoice_number].reciepient ){
