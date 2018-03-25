@@ -38,17 +38,23 @@
         UpdateBalance()
     });
 
+    var eth_balance;
+
     function UpdateBalance() {
         GenerateInvoice.balances(web3.eth.coinbase, function (err, result) {
             console.log(result["c"][0]);
-            if (result["c"][0] == 0) {
-                document.getElementById("your_balance").innerHTML = "Looks like your account is empty";
-            } else {
-                document.getElementById("your_balance").innerHTML = "The accounts balance is " + result["c"][0] /
-                    10000 +
-                    "ETH";
-            }
+            eth_balance = result["c"][0];
+            update_your_balance_id();
         });
+    }
+
+    function update_your_balance_id() {
+        if (eth_balance == 0) {
+            document.getElementById("your_balance").innerHTML = "Looks like your account is empty";
+        } else {
+            document.getElementById("your_balance").innerHTML = "The accounts balance is " + eth_balance/10000 + "ETH";
+        }
+
     }
 
     function add_to_balance(_amount) {
@@ -78,8 +84,10 @@
         withdrawl_amount(parseInt($("#withdrawl_amount").val()));
     }
 
-    function get_contract_balance(){
-        web3.eth.getBalance(GenerateInvoiceAddress, function(err, result){console.log(result["c"][0]/10000)})
+    function get_contract_balance() {
+        web3.eth.getBalance(GenerateInvoiceAddress, function (err, result) {
+            console.log(result["c"][0] / 10000)
+        })
     }
 </script>
 

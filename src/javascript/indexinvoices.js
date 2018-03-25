@@ -52,7 +52,7 @@ $.getJSON("./abi/CreateTutor.json", function (result) {
             console.log("edittutor()");
         }
     });
-    createinvoiceform();
+    //createinvoiceform();
 });
 
 var GenerateInvoiceABI;
@@ -70,47 +70,35 @@ $.getJSON("./abi/InvoiceGenerator.json", function (result) {
     var tmp_the_correct_network = tmp_networks[tmp_networks.length - 1];
     var address = GenerateInvoiceABI.networks[tmp_the_correct_network].address;
     GenerateInvoice = web3.eth.contract(GenerateInvoiceABI.abi).at(address);
-    /*GenerateInvoice.tutors(web3.eth.coinbase, function (err, result) {
-        //console.log(result);
-        //console.log(result[0]);
-        TutorInformation = result;
-        if (result[0] == "") {
-            console.log("condition zero");
-        } else {
-            console.log("non zero");
-        }
-    });*/
+    //One can run functions with the smart contract here because it has finished loading
+    UpdateBalance();
+    FromInvoiceLookup();
+    ReciepientInvoiceLookup();
 });
 
-function createinvoiceform() {
-    $.get("./src/html/createinvoiceform.html", function (result) {
-        $("body").append(result);
-        CreateTutor.tutors(web3.eth.coinbase, function (err, result) {
-            if (result[0] == "") {
-                $('#their_name').text("Looks like you are not registered");
-            } else {
-                $('#their_name').text("Your registered name is " + result[0]);
-            }
-        })
-    })
+var eth_balance;
+function UpdateBalance() {
+    GenerateInvoice.balances(web3.eth.coinbase, function (err, result) {
+        //console.log(result["c"][0]);
+        eth_balance = result["c"][0]/10000;
+        //update_your_balance_id();
+    });
 }
 
-var invoice_to;
-var invoice_amount;
-var invoice_note;
-
-function GatherInvoiceData() {
-    invoice_to = $('#invoice_to').val();
-    invoice_amount = $('#invoice_amount').val();
-    invoice_note = $('#invoice_note').val();
-    GenerateInvoiceFromForm();
-    $('#invoice_to').val("");
-    $('#invoice_amount').val(0);
-    $('#invoice_note').val("");
+var invoices_from;
+function FromInvoiceLookup() {
+    GenerateInvoice.from_invoice_lookup(web3.eth.coinbase, function (err, result) {
+        //console.log(result["c"][0]);
+        invoices_from = result;
+        //update_your_balance_id();
+    });
 }
 
-function GenerateInvoiceFromForm(){
-    GenerateInvoice.create_invoice(invoice_to, invoice_amount, invoice_note, function (err, result){
-        console.log(result);
-    })
+var invices_to;
+function ReciepientInvoiceLookup() {
+    GenerateInvoice.reciepient_invoice_lookup(web3.eth.coinbase, function (err, result) {
+        //console.log(result["c"][0]);
+        invices_to = result;
+        //update_your_balance_id();
+    });
 }
