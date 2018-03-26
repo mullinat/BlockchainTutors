@@ -1,3 +1,31 @@
+var eth_balance;
+function UpdateBalance() {
+    GenerateInvoice.balances(web3.eth.coinbase, function (err, result) {
+        //console.log(result["c"][0]);
+        eth_balance = result["c"][0]/10000;
+        //update_your_balance_id();
+    });
+}
+
+var invoices_from;
+function FromInvoiceLookup() {
+    GenerateInvoice.from_invoice_lookup(web3.eth.coinbase, 0, function (err, result) {
+        console.log(result);
+        invoices_from = result;
+        //update_your_balance_id();
+    });
+}
+
+var invoices_to;
+function ReciepientInvoiceLookup() {
+    GenerateInvoice.reciepient_invoice_lookup(web3.eth.coinbase, 0, function (err, result) {
+        console.log(result);
+        invoices_to = result;
+        //update_your_balance_id();
+    });
+}
+
+
 var CreateStudentABI;
 var CreateStudent;
 var StudentInformation;
@@ -72,33 +100,6 @@ $.getJSON("./abi/InvoiceGenerator.json", function (result) {
     GenerateInvoice = web3.eth.contract(GenerateInvoiceABI.abi).at(address);
     //One can run functions with the smart contract here because it has finished loading
     UpdateBalance();
-    FromInvoiceLookup();
-    ReciepientInvoiceLookup();
+    //FromInvoiceLookup();
+    //ReciepientInvoiceLookup();
 });
-
-var eth_balance;
-function UpdateBalance() {
-    GenerateInvoice.balances(web3.eth.coinbase, function (err, result) {
-        //console.log(result["c"][0]);
-        eth_balance = result["c"][0]/10000;
-        //update_your_balance_id();
-    });
-}
-
-var invoices_from;
-function FromInvoiceLookup() {
-    GenerateInvoice.from_invoice_lookup(web3.eth.coinbase, function (err, result) {
-        //console.log(result["c"][0]);
-        invoices_from = result;
-        //update_your_balance_id();
-    });
-}
-
-var invices_to;
-function ReciepientInvoiceLookup() {
-    GenerateInvoice.reciepient_invoice_lookup(web3.eth.coinbase, function (err, result) {
-        //console.log(result["c"][0]);
-        invices_to = result;
-        //update_your_balance_id();
-    });
-}
