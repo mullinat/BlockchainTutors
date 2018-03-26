@@ -54,6 +54,13 @@ app.get('/yourbalance', function (req, res) {
         res.send(data);
     });
 });
+app.get('/registerusername', function (req, res) {
+    fs.readFile('./templates/registerusername.mustache', 'utf8', (err, data) => {
+        if (err) throw err;
+        //res.send(mustache.to_html(data, {name: "Joe"}));
+        res.send(data);
+    });
+});
 
 
 //Host the app
