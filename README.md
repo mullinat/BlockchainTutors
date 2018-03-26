@@ -7,6 +7,14 @@ The goal of this project is to look up and connect with
 verified tutors that know what you need. The ability to 
 review tutors is also super important.
 
+First install the dependencies:
+    Nodejs
+</pre>
+<a href="https://nodejs.org/en/download/package-manager/">&nbsp;&nbsp;Here one can install nodejs</a>
+<pre>
+    The follow node packages
+        npm install -g truffle
+        npm install -g ganache-cli 
 
 Instruction to run this application using testrpc
     1. Clone this repository
@@ -15,13 +23,9 @@ Instruction to run this application using testrpc
         cd BlockchainTutors
     3. Install required packages
         npm install
-    4. Install truffle package globally
-        sudo npm install -g truffle
-    5. Install testrpc package globally
-        sudo npm install -g testrpc
-    6. In aditional terminal window run testrpc on port 5555
-        testrpc -p 5555
-    7. cd into TruffleWorkspace directory
+    4. In aditional terminal window run testrpc on port 5555
+        ganache-cli -p 5555
+    7. cd into TruffleWorkspace directory and run
         truffle deploy
     8. Connect metamask to testrpc
         Click Metamask -> Netowrks -> custom RPC and paste what is below
@@ -30,7 +34,8 @@ Instruction to run this application using testrpc
         http://localhost:3042/src
     10. Click the faucet link or copy and paste the link below
         http://localhost:3042/src/html/faucet.html
-    11. Copy your metamask public address into the page from step 10 and click "send" to send yourself test ether
+    11. Copy your metamask public address into the page from step 10 and click "send" 
+        to send yourself test ether on your local testnet
     12. Navigate to the main page of the application
         http://localhost:3042
     13. Try our the application

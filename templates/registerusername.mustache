@@ -10,10 +10,10 @@
 <body>
     <h1>You can register a username on the blockchain below</h1>
     <br>
-    <p id="your_balance">Looks like you currently have not set a username, once one appears on the blockchain it will appear here</p>
+    <p id="your_username">Looks like you currently have not set a username, once one appears on the blockchain it will appear here</p>
     <h1>Set username to: </h1>
-    <input type="number" id="set_username">
-    <input type="button" id="set_username_button" value="Send username to Blockchain" onclick="javascript:add_to_balance_button()">
+    <input type="text" id="set_username">
+    <input type="button" id="set_username_button" value="Send username to Blockchain" onclick="javascript:set_username_button()">
 </body>
 <script>
     var RegisterUsernameABI;
@@ -28,27 +28,44 @@
         var tmp_the_correct_network = tmp_networks[tmp_networks.length - 1];
         RegisterUsernameAddress = RegisterUsernameABI.networks[tmp_the_correct_network].address;
         RegisterUsername = web3.eth.contract(RegisterUsernameABI.abi).at(RegisterUsernameAddress);
+        GetUsername();
     });
 
+    var username_pos;
     var username;
+
     function GetUsername() {
-        RegisterUsername.RegisterUsername(web3.eth.coinbase, function (err, result) {
+        RegisterUsername.user_id_number(web3.eth.coinbase, function (err, result) {
+            //console.log(result);
+            username_pos = result.c[0];
+            if (username_pos == 0) {
+                DisplayUsername();
+            } else {
+                RegisterUsername.usernames(username_pos, function (err, result) {
+                    console.log(result);
+                    username = result;
+                    DisplayUsername();
+                });
+            }
+        });
+    }
+
+    function UpdateUsername(_username) {
+        RegisterUsername.SetUsername(_username, function (err, result) {
             console.log(result);
             username = result;
         });
     }
-    function UpdateUsername(_username) {
-        RegisterUsername.RegisterUsername(_username, function (err, result) {
-            console.log(result);
-            username = result;
-        });
+
+    function set_username_button() {
+        UpdateUsername($("#set_username").val())
     }
 
     function DisplayUsername() {
-        if (eth_balance == 0) {
-            document.getElementById("your_balance").innerHTML = "Looks like your account is empty";
+        if (username_pos == 0) {
+            document.getElementById("your_username").innerHTML = "Looks like you have yet to set your username";
         } else {
-            document.getElementById("your_balance").innerHTML = "The accounts balance is " + eth_balance/10000 + "ETH";
+            document.getElementById("your_username").innerHTML = "Your username is " + username;
         }
     }
 </script>
