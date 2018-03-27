@@ -56,7 +56,14 @@ function RefreshInvoices() {
     }
 }
 
-
+function DisplayInfoices(){
+    for(var i in invoices_from){
+        $("#incomeing_invoices").append("<li>" + invoices_from[0] + "</li>");
+    }
+    for(var i in invoices_to){
+        $("#sent_invoices").append("<li>" + invoices_from[0] + "</li>");
+    }
+}
 var CreateStudentABI;
 var CreateStudent;
 var StudentInformation;
