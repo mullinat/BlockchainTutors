@@ -4,6 +4,7 @@ function UpdateBalance() {
         //console.log(result["c"][0]);
         eth_balance = result["c"][0] / 10000;
         //update_your_balance_id();
+        $("#your_balance").text("Your balance is " + eth_balance + "ETH");
     });
 }
 
@@ -57,11 +58,17 @@ function RefreshInvoices() {
 }
 
 function DisplayInfoices(){
-    for(var i in invoices_from){
-        $("#incomeing_invoices").append("<li>" + invoices_from[i] + "</li>");
-    }
     for(var i in invoices_to){
-        $("#sent_invoices").append("<li>" + invoices_to[i] + "</li>");
+        $("#sent_invoices").append("<li> To  : " + invoices_to[i][1] + "</li>");
+        $("#sent_invoices").append("<li> Amount = " + invoices_to[i][2] + "</li>");
+        $("#sent_invoices").append("<li> Message Attached : " + invoices_to[i][3] + "</li>");
+        $("#sent_invoices").append("<hr>");
+    }
+    for(var i in invoices_from){
+        $("#incomeing_invoices").append("<li> From  : " + invoices_from[i][0] + "</li>");
+        $("#incomeing_invoices").append("<li> Amount = " + invoices_from[i][2] + "</li>");
+        $("#incomeing_invoices").append("<li> Message Attached : " + invoices_from[i][3] + "</li>");
+        $("#incomeing_invoices").append("<hr>");
     }
 }
 var CreateStudentABI;
@@ -140,4 +147,5 @@ $.getJSON("./abi/InvoiceGenerator.json", function (result) {
     UpdateBalance();
     FromInvoiceLookup(0);
     ReciepientInvoiceLookup(0);
+    UpdateBalance();
 });
