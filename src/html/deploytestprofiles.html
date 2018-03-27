@@ -14,6 +14,9 @@
     <a href="/src/CreateTutor.js">Should link to CreateTutor.js</a>
     <br>
     <button onclick="deploy_test_tutors();">Deploy Test Tutors</button>
+    <br>
+    <input type="text" if="users_address">
+    <button onclick="send_me_an_invoice()">Send Me Test Invoice</button>
 </body>
 
 <script>
@@ -84,11 +87,6 @@
                 console.log("Something went wrong");
         }
     }
-    var names = ["Luke Cage", "Zoe Smith", "Joe Daniels", "Julie Muzullo"];
-    var capableOfTutoring = ["Math Science History Piano", "Math Science History Piano", "Math Science History Piano",
-        "Math Science History Piano"
-    ];
-
 
     function CreateTutor(tutor_info, tutor_info) {
         MyContract.createNewTutor(tutor_info[0], tutor_info[1], tutor_info[2], tutor_info[3], tutor_info[4], function () {
@@ -98,13 +96,43 @@
 
     function deploy_test_tutors() {
         console.log("deploy_test_tutors");
-        for (var i in names) {
+        /*for (var i in names) {
             console.log(i);
-            MyContract.createNewTutor(names[i], capableOfTutoring[i], names[i] + ".com", "Random Hash Jibberish", "me@" + names[i] + ".com", {from:web3.eth.accounts[i], gas:4000000},
+            MyContract.createNewTutor(names[i], capableOfTutoring[i], names[i] + ".com", "Random Hash Jibberish", "me@" + names[i] + ".com", { from: web3.eth.accounts[i], gas: 4000000 },
                 function () {
                     console.log("Information deployed successfully")
                 });
         }
+        var names = ["Luke Cage", "Zoe Smith", "Joe Daniels", "Julie Muzullo"];
+        var capableOfTutoring = ["Math Science History Piano", "Math Science History Piano", "Math Science History Piano",
+            "Math Science History Piano"
+        ];*/
+        MyContract.createNewTutor("Eva Muzullo", "Math Chemistry Physics English", "eva.me", "Random Hash Jibberish", "EvaMuzullo@gmail.com", { from: web3.eth.accounts[0], gas: 4000000 },
+            function () {
+                console.log("Information deployed successfully")
+            });
+        MyContract.createNewTutor("Luke Cage", "Math History Piano", "lukecage.me", "Random Hash Jibberish", "lukecage@gmail.com", { from: web3.eth.accounts[1], gas: 4000000 },
+            function () {
+                console.log("Information deployed successfully")
+            });
+        MyContract.createNewTutor("Fred Williams", "Math English Robotics", "Fred Williams.me", "Random Hash Jibberish", "FredWilliams@gmail.com", { from: web3.eth.accounts[2], gas: 4000000 },
+            function () {
+                console.log("Information deployed successfully")
+            });
+        MyContract.createNewTutor("Zoe Smith", "Music Theory Science History Social Studies solidity python", "ZoeSmith.me", "Random Hash Jibberish", "zoesmith@gmail.com", { from: web3.eth.accounts[3], gas: 4000000 },
+            function () {
+                console.log("Information deployed successfully")
+            });
+        MyContract.createNewTutor("Julia Antenew", "Math solidity programming python", "JuliaAntenew.me", "Random Hash Jibberish", "Julia_Antenew@gmail.com", { from: web3.eth.accounts[4], gas: 4000000 },
+            function () {
+                console.log("Information deployed successfully")
+            });
+    }
+
+    var users_public_key;
+    function send_me_an_invoice() {
+        users_public_key = $("#users_address").val()
+        console.log("send_me_an_invoice currently does not do anything");
     }
 </script>
 
