@@ -58,10 +58,10 @@ function RefreshInvoices() {
 
 function DisplayInfoices(){
     for(var i in invoices_from){
-        $("#incomeing_invoices").append("<li>" + invoices_from[0] + "</li>");
+        $("#incomeing_invoices").append("<li>" + invoices_from[i] + "</li>");
     }
     for(var i in invoices_to){
-        $("#sent_invoices").append("<li>" + invoices_from[0] + "</li>");
+        $("#sent_invoices").append("<li>" + invoices_to[i] + "</li>");
     }
 }
 var CreateStudentABI;

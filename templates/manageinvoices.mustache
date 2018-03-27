@@ -4,6 +4,7 @@
 Praise to the almighty internet wizzards in who write web development tutorials I am in your debt 
     https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tabs_open
 -->
+
 <head>
     <meta charset="utf-8" />
     <script src="./src/jquery.min.js"></script>
@@ -62,10 +63,12 @@ Praise to the almighty internet wizzards in who write web development tutorials 
 <body>
     <h1>Manage Invoices</h1>
     <br>
-    <button onclick="javascript:RefreshInvoices();">Fetch Invoices</button><button onclick="javascript:DisplayInfoices();">Refresh Invoices</button><br>
+    <button onclick="javascript:RefreshInvoices();">Fetch Invoices</button>
+    <button onclick="javascript:DisplayInfoices();">Refresh Invoices</button>
+    <br>
     <div class="tab">
         <button class="tablinks" onclick="openView(event, 'sent_invoices')" id="defaultOpen" id="sent_invoices">Sent Invoices</button>
-        <button class="tablinks" onclick="openView(event, 'incoming_invoices')">Incomeing Invoices</button>
+        <button class="tablinks" onclick="openView(event, 'incomeing_invoices')">Incomeing Invoices</button>
         <button class="tablinks" onclick="openView(event, 'completed_sent_invoices')" id="completed_sent_invoices">Completed Sent Invoices</button>
         <button class="tablinks" onclick="openView(event, 'completed_incomeing_invoices')">Completed Incoming Invoices</button>
     </div>
@@ -74,7 +77,7 @@ Praise to the almighty internet wizzards in who write web development tutorials 
         <h3>Sent Invocies</h3>
     </div>
 
-    <div id="incoming_invoices" class="tabcontent">
+    <div id="incomeing_invoices" class="tabcontent">
         <h3>Incoming Invoices</h3>
     </div>
 
