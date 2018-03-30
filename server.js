@@ -61,6 +61,13 @@ app.get('/registerusername', function (req, res) {
         res.send(data);
     });
 });
+app.get('/index2', function (req, res) {
+    fs.readFile('./templates/index2.mustache', 'utf8', (err, data) => {
+        if (err) throw err;
+        //res.send(mustache.to_html(data, {name: "Joe"}));
+        res.send(data);
+    });
+});
 
 
 //Host the app
