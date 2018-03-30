@@ -12,7 +12,8 @@ $.getJSON("./abi/CreateStudent.json", function (result) {
     //console.log("tmp_networks = " + tmp_networks);
     //console.log(tmp_networks[tmp_networks.length - 1]);
     var tmp_the_correct_network = tmp_networks[tmp_networks.length - 1];
-    var address = MyContractABI.networks[tmp_the_correct_network].address;
+    //var address = MyContractABI.networks[tmp_the_correct_network].address;
+    var address = MyContractABI.networks[3].address
     MyContract = web3.eth.contract(MyContractABI.abi).at(address);
     MyContract.students(web3.eth.coinbase, function (err, result) {
         //console.log(result);

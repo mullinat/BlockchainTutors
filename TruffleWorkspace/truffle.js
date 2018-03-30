@@ -1,5 +1,6 @@
 var HDWalletProvider = require("truffle-hdwallet-provider");
-var privateKey = "I PUT MY PRIVATE KEY IN A PUBLIC REPO LMAFO";
+//MAKE SURE TO PUT YOUR MEMORIC HERE BELOW
+var memoric = "I really like pie like pie is totally my favorite food";
 
 module.exports = {
   networks: {
@@ -10,9 +11,12 @@ module.exports = {
     },
     ropsten: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/<INFURA_Access_Token>")
+        //MAKE SURE TO ADD YOUR INFURA ROPSTEN KEY BELOW
+        return new HDWalletProvider(memoric, "https://ropsten.infura.io/<YOUR INFURA ROPSTEN KEY>")
       },
-      network_id: 3
+      network_id: 3,
+      gas: 4700000,
+      gasPricce: 100000000000
     } 
   }
 };
