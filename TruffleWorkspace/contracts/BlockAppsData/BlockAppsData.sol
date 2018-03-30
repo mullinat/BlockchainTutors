@@ -6,18 +6,20 @@ contract BlockAppsData {
     uint32 public current_number_users  = 1;
     
     //list of admins
-    address[] admins;
+    mapping (address => bool) admins;
+    uint32 num_admins;
 
     //BlockAppsData framework variables
     mapping (bytes16 => bool) valid_keys;
-    mapping (uint32 => mapping(bytes16 => string)) app_data;
+    mapping (uint32 => mapping (bytes16 => string)) app_data;
 
     //Constructor sets inital admin
     //Still need to set up and admin framework for adding and removing admins
     //Other admin controlls will also have to be added
     function BlockAppsData(address _inital_admin) public{
-        if(admins[0] == address(0)){
-            admins.push(_inital_admin);
+        if(num_admins == 0){
+            admins[_inital_admin] = true;
+            num_admins += 1;
         }
     }
 
@@ -36,7 +38,7 @@ contract BlockAppsData {
 
     //Here admins can add new key's to where users can put there data
     function add_valid_data_key(uint _admin_position, bytes16 _new_key) public {
-        if(admins[_admin_position] == msg.sender){
+        if(admins[msg.sender] == true){
             valid_keys[_new_key] = true;
         }
     }

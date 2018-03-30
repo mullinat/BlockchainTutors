@@ -20,7 +20,7 @@ contract CreateTutor2 {
     
     address BlockAppsData_address;
 
-    function CreateTutor(address _admin) public {
+    function CreateTutor2(address _admin) public {
         if(owner == address(0)){
             owner = _admin;
         }
