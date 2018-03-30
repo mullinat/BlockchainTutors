@@ -37,7 +37,7 @@ contract BlockAppsData {
     }
 
     //Here admins can add new key's to where users can put there data
-    function add_valid_data_key(uint _admin_position, bytes16 _new_key) public {
+    function add_valid_data_key(bytes16 _new_key) public {
         if(admins[msg.sender] == true){
             valid_keys[_new_key] = true;
         }
