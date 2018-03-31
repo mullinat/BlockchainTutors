@@ -22,6 +22,7 @@
             }
             SmartContracts["CreateTutor2"].call.set_BlockAppsData_address(SmartContracts["BlockAppsData"].address, function (err, result) { console.log(result) })
             SmartContracts["BlockAppsData"].call.add_new_permissioned_address(SmartContracts["CreateTutor2"].address, function (err, result) { console.log(result) })
+            
         }
         function test() {
             SmartContracts["BlockAppsData"].call.add_user_data("tutoring_email__", "paulmullins@protonmail.com", function (err, result) { console.log(result) })
@@ -42,7 +43,7 @@
             SmartContracts["BlockAppsData"].call.sent_in_addresses(0, function (err, result) { console.log(result) })
 
         }
-        function superTest(){
+        function superTest() {
             SmartContracts["BlockAppsData"].call.set_username("I am SOO Special", function (err, result) { console.log(result) });
             SmartContracts["CreateTutor2"].call.createNewTutor("Fred", "Math", "reddit.com", "FUCK IPFS", "paulmullins@protonmail.com", function (err, result) { console.log(result) })
         }
@@ -61,6 +62,11 @@
     <h1>THIS PAGE IS FOR TESTING NEW CODE</h1>
     <br>
     <button onclick="javascript:AddContractKeys()">AddContractKeys()</button>
+    <br>
+    <button onclick="javascript:superTest()">superTest()</button>
+    <br>
+    <button onclick="javascript:check()">check()</button>
+    <br>
 </body>
 
 </html>
