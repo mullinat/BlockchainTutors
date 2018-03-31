@@ -12,6 +12,6 @@ module.exports = function (deployer) {
   deployer.deploy(InvoiceGenerator);
   
   //You may want to change these to and address you control 
-  deployer.deploy(BlockAppsData, "0x8efbadcf220414a17ee6156be57d4568b0eb857c");
-  deployer.deploy(CreateTutor2, "0x8efbadcf220414a17ee6156be57d4568b0eb857c");
+  deployer.deploy(BlockAppsData, "0x2e874B4997D5074c6E39729cD27d20166CEB1bf7");
+  deployer.deploy(CreateTutor2, "0x2e874B4997D5074c6E39729cD27d20166CEB1bf7");
 };

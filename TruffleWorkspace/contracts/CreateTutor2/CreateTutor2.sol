@@ -41,29 +41,30 @@ contract CreateTutor2 {
         var tmpTutor = tutors[msg.sender];
         BlockAppsData database = BlockAppsData(BlockAppsData_address);
 
+        //uint32 _tmp_user_id = database.get_user_id_number(msg.sender);
+        //if(_tmp_user_id != 0) {
         tmpTutor.name = tmpName;
-
         //Add Key tutor_name______
-        database.add_user_data("tutor_name______", tmpName);
+        database.permissioned_add_user_data("tutor_name______", tmpName, msg.sender);
 
         tmpTutor.capableOfTutoring = tmpCapableOfTutoring;
         //Add Key CapableOfTutorin
-        database.add_user_data("CapableOfTutorin", tmpCapableOfTutoring);
+        database.permissioned_add_user_data("CapableOfTutorin", tmpCapableOfTutoring, msg.sender);
 
 
         tmpTutor.website = tmpWebsite;
         //Add Key tutoring_website
-        database.add_user_data("tutoring_website", tmpWebsite);
+        database.permissioned_add_user_data("tutoring_website", tmpWebsite, msg.sender);
 
 
         tmpTutor.ipfsLink = tmpIpfsLink;
         //Add Key TutoringIPFSLink
-        database.add_user_data("TutoringIPFSLink", tmpIpfsLink);
+        database.permissioned_add_user_data("TutoringIPFSLink", tmpIpfsLink, msg.sender);
 
 
         tmpTutor.email = tmpEmail;
         //Add Key tutoring_email__
-        database.add_user_data("tutoring_email__", tmpEmail);
+        database.permissioned_add_user_data("tutoring_email__", tmpEmail, msg.sender);
 
         //This should be removed
         tmpTutor.balance = 0;
@@ -71,6 +72,7 @@ contract CreateTutor2 {
         //The CreateTutor contract has an index of existing tutors which is used to index and search for tutors
         tutors_lookup[current_numbner_of_tutors] = msg.sender;
         current_numbner_of_tutors = current_numbner_of_tutors + 1;
+        //}
     }
     function setName(string tmpName) public {
         tutors[msg.sender].name = tmpName;

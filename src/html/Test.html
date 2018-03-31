@@ -20,6 +20,8 @@
                 SmartContracts["BlockAppsData"].call.add_valid_data_key(CreateTutor2Keys[i], function (err, result) { console.log(result) })
                 console.log("Added Key" + CreateTutor2Keys[i]);
             }
+            SmartContracts["CreateTutor2"].call.set_BlockAppsData_address(SmartContracts["BlockAppsData"].address, function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.add_new_permissioned_address(SmartContracts["CreateTutor2"].address, function (err, result) { console.log(result) })
         }
         function test() {
             SmartContracts["BlockAppsData"].call.add_user_data("tutoring_email__", "paulmullins@protonmail.com", function (err, result) { console.log(result) })
@@ -27,7 +29,30 @@
             SmartContracts["BlockAppsData"].call.user_id_number(web3.eth.coinbase, function (err, result) { console.log(result) });
             SmartContracts["BlockAppsData"].call.set_username("I LIKE PIE", function (err, result) { console.log(result) });
             SmartContracts["BlockAppsData"].call.add_user_data("tutor_name______", "Should Say Tutor Name", function (err, result) { console.log(result) });
-            SmartContracts["BlockAppsData"].call.app_data(0, "tutor_name______", function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.app_data(1, "tutor_name______", function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.app_data(1, "CapableOfTutorin", function (err, result) { console.log(result) })
+            SmartContracts["CreateTutor2"].call.createNewTutor("Fred", "Math", "reddit.com", "FUCK IPFS", "paulmullins@protonmail.com", function (err, result) { console.log(result) })
+
+            SmartContracts["BlockAppsData"].call.usernames(web3.eth.coinbase, function (err, result) { console.log(result) })
+
+            SmartContracts["BlockAppsData"].call.history(0, function (err, result) { console.log(result) })
+
+            SmartContracts["BlockAppsData"].call.permissioned_addresses(SmartContracts["CreateTutor2"].address, function (err, result) { console.log(result) })
+
+            SmartContracts["BlockAppsData"].call.sent_in_addresses(0, function (err, result) { console.log(result) })
+
+        }
+        function superTest(){
+            SmartContracts["BlockAppsData"].call.set_username("I am SOO Special", function (err, result) { console.log(result) });
+            SmartContracts["CreateTutor2"].call.createNewTutor("Fred", "Math", "reddit.com", "FUCK IPFS", "paulmullins@protonmail.com", function (err, result) { console.log(result) })
+        }
+        function check() {
+            SmartContracts["BlockAppsData"].call.usernames(1, function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.app_data(1, "tutor_name______", function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.app_data(1, "CapableOfTutorin", function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.app_data(1, "tutoring_website", function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.app_data(1, "TutoringIPFSLink", function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.app_data(1, "tutoring_email__", function (err, result) { console.log(result) })
         }
     </script>
 </head>
@@ -35,6 +60,7 @@
 <body>
     <h1>THIS PAGE IS FOR TESTING NEW CODE</h1>
     <br>
+    <button onclick="javascript:AddContractKeys()">AddContractKeys()</button>
 </body>
 
 </html>
