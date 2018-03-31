@@ -5,43 +5,33 @@
     <meta charset="utf-8" />
     <script src="./src/jquery.min.js"></script>
     <script src="./src/javascript/testmetamask.js"></script>
+    <script src="/src/smartContracts/ImportSmartContract.js"></script>
 </head>
 
 <body>
     <h1>You can register a username on the blockchain below</h1>
     <br>
     <p id="your_username">Looks like you currently have not set a username, once one appears on the blockchain it will appear here</p>
+    <br>
+    <button onclick="javascript:GetUsername()">Click Here to Check Blockchain</button>
     <h1>Set username to: </h1>
     <input type="text" id="set_username">
     <input type="button" id="set_username_button" value="Send username to Blockchain" onclick="javascript:set_username_button()">
 </body>
 <script>
-    var RegisterUsernameABI;
-    var RegisterUsernameAddress;
-    var RegisterUsername;
-    $.getJSON("./abi/RegisterUsername.json", function (result) {
-        RegisterUsernameABI = result;
-        var tmp_networks = [];
-        for (var i in RegisterUsernameABI.networks) {
-            tmp_networks.push(i);
-        }
-        var tmp_the_correct_network = tmp_networks[tmp_networks.length - 1];
-        RegisterUsernameAddress = RegisterUsernameABI.networks[tmp_the_correct_network].address;
-        RegisterUsername = web3.eth.contract(RegisterUsernameABI.abi).at(RegisterUsernameAddress);
-        GetUsername();
-    });
+    GetSmartContract("/abi/BlockAppsData.json", "BlockAppsData");
 
     var username_pos;
     var username;
 
     function GetUsername() {
-        RegisterUsername.user_id_number(web3.eth.coinbase, function (err, result) {
+        SmartContracts["BlockAppsData"].call.user_id_number(web3.eth.coinbase, function (err, result) {
             //console.log(result);
             username_pos = result.c[0];
             if (username_pos == 0) {
                 DisplayUsername();
             } else {
-                RegisterUsername.usernames(username_pos, function (err, result) {
+                SmartContracts["BlockAppsData"].call.usernames(username_pos, function (err, result) {
                     console.log(result);
                     username = result;
                     DisplayUsername();
@@ -51,7 +41,7 @@
     }
 
     function UpdateUsername(_username) {
-        RegisterUsername.SetUsername(_username, function (err, result) {
+        SmartContracts["BlockAppsData"].call.set_username(_username, function (err, result) {
             console.log(result);
             username = result;
         });
