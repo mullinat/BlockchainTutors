@@ -6,12 +6,12 @@ contract BlockAppsData {
     uint32 public current_number_users  = 1;
     
     //list of admins
-    mapping (address => bool) admins;
-    uint32 num_admins;
+    mapping (address => bool) public admins;
+    uint32 public num_admins;
 
     //BlockAppsData framework variables
-    mapping (bytes16 => bool) valid_keys;
-    mapping (uint32 => mapping (bytes16 => string)) app_data;
+    mapping (bytes16 => bool) public valid_keys;
+    mapping (uint32 => mapping (bytes16 => string)) public app_data;
 
     //Constructor sets inital admin
     //Still need to set up and admin framework for adding and removing admins

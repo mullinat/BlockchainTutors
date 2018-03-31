@@ -6,7 +6,7 @@ var SmartContracts = {};
 function GetSmartContract(_location, _name) {
     $.getJSON(_location, function (result) {
         //GenerateInvoiceABI = result;
-        SmartContracts[_name] = SmartContract;
+        SmartContracts[_name] = {};
         SmartContracts[_name].abi = result;
         var tmp_networks = [];
         for (var i in SmartContracts[_name].abi.networks) {

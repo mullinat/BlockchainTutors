@@ -9,6 +9,19 @@
     <script>
         GetSmartContract("/abi/BlockAppsData.json", "BlockAppsData");
         GetSmartContract("/abi/CreateTutor2.json", "CreateTutor2");
+        var CreateTutor2Keys = []
+        CreateTutor2Keys.push("tutor_name______");
+        CreateTutor2Keys.push("CapableOfTutorin");
+        CreateTutor2Keys.push("tutoring_website");
+        CreateTutor2Keys.push("TutoringIPFSLink");
+        CreateTutor2Keys.push("tutoring_email__");
+        function AddContractKeys() {
+            for (var i = 0; i < CreateTutor2Keys.length - 1; i++) {
+                SmartContracts["BlockAppsData"].call.add_valid_data_key(CreateTutor2Keys[i], function (err, result) { console.log(result) })
+                console.log("Added Key" + CreateTutor2Keys[i]);
+            }
+        }
+
     </script>
 </head>
 
