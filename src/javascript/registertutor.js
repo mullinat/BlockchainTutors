@@ -1,4 +1,4 @@
-//
+/*
 var MyContractABI;
 var MyContract;
 var TutorInformation;
@@ -27,7 +27,27 @@ $.getJSON("./abi/CreateTutor.json", function (result) {
         }
     });
 });
-
+*/
+var TutorInformation = []
+GetSmartContract("/abi/BlockAppsData.json", "BlockAppsData");
+GetSmartContract("/abi/CreateTutor2.json", "CreateTutor2");
+GetSmartContract("/abi/CreateStudent2.json", "CreateStudent2");
+function ContractsVariablesDeployed(){
+    SmartContracts["BlockAppsData"].call.app_data(1, "tutor_name______" , function (err, result) {
+        //console.log(result);
+        //console.log(result[0]);
+        if (result != "") {
+            TutorInformation.push(result);
+            SmartContracts["BlockAppsData"].call.app_data(1, "CapableOfTutorin" , function (err, result) {TutorInformation.push(result);})
+            SmartContracts["BlockAppsData"].call.app_data(1, "tutoring_website" , function (err, result) {TutorInformation.push(result);})
+            SmartContracts["BlockAppsData"].call.app_data(1, "TutoringIPFSLink" , function (err, result) {TutorInformation.push(result);})
+            SmartContracts["BlockAppsData"].call.app_data(1, "tutoring_email__" , function (err, result) {TutorInformation.push(result);edittutor();})
+        }
+        else {
+            registertutor();
+        }
+    });
+}
 function registertutor() {
     $.get("./src/html/registertutor.html", function (result) {
         $("body").append(result);
