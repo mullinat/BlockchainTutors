@@ -12,6 +12,6 @@ module.exports = function (deployer) {
   deployer.deploy(InvoiceGenerator);
   
   //You may want to change these to and address you control 
-  deployer.deploy(BlockAppsData, "0x00865f76187215724EE066bab71F74d6406A0ebE");
-  deployer.deploy(CreateTutor2, "0x00865f76187215724EE066bab71F74d6406A0ebE");
+  deployer.deploy(BlockAppsData, web3.eth.accounts[0]);
+  deployer.deploy(CreateTutor2, web3.eth.accounts[0]);
 };
