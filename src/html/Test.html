@@ -16,7 +16,7 @@
         CreateTutor2Keys.push("TutoringIPFSLink");
         CreateTutor2Keys.push("tutoring_email__");
         function AddContractKeys() {
-            for (var i = 0; i < CreateTutor2Keys.length - 1; i++) {
+            for (var i = 0; i < CreateTutor2Keys.length; i++) {
                 SmartContracts["BlockAppsData"].call.add_valid_data_key(CreateTutor2Keys[i], function (err, result) { console.log(result) })
                 console.log("Added Key" + CreateTutor2Keys[i]);
             }
@@ -43,8 +43,10 @@
             SmartContracts["BlockAppsData"].call.sent_in_addresses(0, function (err, result) { console.log(result) })
 
         }
-        function superTest() {
+        function createUsername() {
             SmartContracts["BlockAppsData"].call.set_username("I am SOO Special", function (err, result) { console.log(result) });
+        }
+        function setTutor(){
             SmartContracts["CreateTutor2"].call.createNewTutor("Fred", "Math", "reddit.com", "FUCK IPFS", "paulmullins@protonmail.com", function (err, result) { console.log(result) })
         }
         function check() {
@@ -55,6 +57,18 @@
             SmartContracts["BlockAppsData"].call.app_data(1, "TutoringIPFSLink", function (err, result) { console.log(result) })
             SmartContracts["BlockAppsData"].call.app_data(1, "tutoring_email__", function (err, result) { console.log(result) })
         }
+        function checkPermissions() {
+            SmartContracts["BlockAppsData"].call.admins(web3.eth.coinbase, function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.valid_keys("tutor_name______", function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.valid_keys("CapableOfTutorin", function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.valid_keys("tutoring_website", function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.valid_keys("TutoringIPFSLink", function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.valid_keys("tutoring_email__", function (err, result) { console.log(result) })
+        }
+        function other(){
+            SmartContracts["BlockAppsData"].call.admins(web3.eth.coinbase, function (err, result) { console.log(result) })
+            SmartContracts["BlockAppsData"].call.add_valid_data_key("tutor_name______", function (err, result) { console.log(result) })
+        }
     </script>
 </head>
 
@@ -63,7 +77,9 @@
     <br>
     <button onclick="javascript:AddContractKeys()">AddContractKeys()</button>
     <br>
-    <button onclick="javascript:superTest()">superTest()</button>
+    <button onclick="javascript:createUsername()">createUsername()</button>
+    <br>
+    <button onclick="javascript:setTutor()">setTutor()</button>
     <br>
     <button onclick="javascript:check()">check()</button>
     <br>
