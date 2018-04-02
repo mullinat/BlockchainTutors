@@ -57,7 +57,23 @@ function index_tutors() {
                     tutors_index[i].user_id_number = result
                     SmartContracts["BlockAppsData"].call.app_data(tutors_index[i].user_id_number, "tutor_name______", function (err, result) {
                         console.log(result);
-                        tutors_index.push(result);
+                        tutors_index[i]["tutor_name______"] = result;
+                    })
+                    SmartContracts["BlockAppsData"].call.app_data(tutors_index[i].user_id_number, "CapableOfTutorin", function (err, result) {
+                        console.log(result);
+                        tutors_index[i]["CapableOfTutorin"] = result;
+                    })
+                    SmartContracts["BlockAppsData"].call.app_data(tutors_index[i].user_id_number, "tutoring_website", function (err, result) {
+                        console.log(result);
+                        tutors_index[i]["tutoring_website"] = result;
+                    })
+                    SmartContracts["BlockAppsData"].call.app_data(tutors_index[i].user_id_number, "TutoringIPFSLink", function (err, result) {
+                        console.log(result);
+                        tutors_index[i]["TutoringIPFSLink"] = result;
+                    })
+                    SmartContracts["BlockAppsData"].call.app_data(tutors_index[i].user_id_number, "tutoring_email__", function (err, result) {
+                        console.log(result);
+                        tutors_index[i]["tutoring_email__"] = result;
                     })
                 }
                 )
