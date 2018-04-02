@@ -20,6 +20,10 @@
 </body>
 
 <script>
+    GetSmartContract("/abi/BlockAppsData.json", "BlockAppsData");
+    GetSmartContract("/abi/CreateTutor2.json", "CreateTutor2");
+    GetSmartContract("/abi/CreateStudent2.json", "CreateStudent2");
+
     var MyContractABI;
     var MyContract;
     var web3 = new Web3();
@@ -30,7 +34,7 @@
     }
     TestConnected()
     var eth = web3.eth;
-
+    /*
     $.getJSON("/abi/CreateTutor.json", function (result) {
         //console.log(result);
         //console.log(field);
@@ -55,37 +59,48 @@
             }
         });
     });
+    */
 
-    function UpdateTutor(tmpID, tmp_value) {
-        switch (tmpID) {
-            case "tutor_name":
-                MyContract.setName(tmp_value, function () {
-                    console.log("Ummm what now?")
-                });
-                break;
-            case "tutor_subjects":
-                MyContract.setCapableOfTutoring(tmp_value, function () {
-                    console.log("Ummm what now?")
-                });
-                break;
-            case "tutor_website":
-                MyContract.setWebsite(tmp_value, function () {
-                    console.log("Ummm what now?")
-                });
-                break;
-            case "tutor_IPFS":
-                MyContract.setIpfsLink(tmp_value, function () {
-                    console.log("Ummm what now?")
-                });
-                break;
-            case "tutor_email":
-                MyContract.setEmail(tmp_value, function () {
-                    console.log("Ummm what now?")
-                });
-                break;
-            default:
-                console.log("Something went wrong");
-        }
+    /*
+    SmartContracts["BlockAppsData"].call.app_data(1, "CapableOfTutorin" , function (err, result) {TutorInformation.push(result);})
+    SmartContracts["BlockAppsData"].call.app_data(1, "tutoring_website" , function (err, result) {TutorInformation.push(result);})
+    SmartContracts["BlockAppsData"].call.app_data(1, "TutoringIPFSLink" , function (err, result) {TutorInformation.push(result);})
+    SmartContracts["BlockAppsData"].call.app_data(1, "tutoring_email__" , function (err, result) {TutorInformation.push(result);edittutor();})
+    */
+
+    function UpdateTutor(_address, tmpID, tmp_value) {
+        SmartContracts["BlockAppsData"].call.get_user_id_number(_address, function (err, result) {
+            switch (tmpID) {
+                case "tutor_name":
+                    //MyContract.setName(tmp_value, function () {
+                    SmartContracts["CreateTutor2"].call.setName(tmp_value, function () {
+                        console.log("Ummm what now?")
+                    });
+                    break;
+                case "tutor_subjects":
+                    MyContract.setCapableOfTutoring(tmp_value, function () {
+                        console.log("Ummm what now?")
+                    });
+                    break;
+                case "tutor_website":
+                    MyContract.setWebsite(tmp_value, function () {
+                        console.log("Ummm what now?")
+                    });
+                    break;
+                case "tutor_IPFS":
+                    MyContract.setIpfsLink(tmp_value, function () {
+                        console.log("Ummm what now?")
+                    });
+                    break;
+                case "tutor_email":
+                    MyContract.setEmail(tmp_value, function () {
+                        console.log("Ummm what now?")
+                    });
+                    break;
+                default:
+                    console.log("Something went wrong");
+            }
+        })
     }
 
     function CreateTutor(tutor_info, tutor_info) {
@@ -93,7 +108,9 @@
             console.log("Information deployed successfully")
         });
     };
-
+    function set_test_usernames(){
+        
+    }
     function deploy_test_tutors() {
         console.log("deploy_test_tutors");
         /*for (var i in names) {
