@@ -1,3 +1,4 @@
+/*
 var TutorContractABI;
 var TutorContract;
 $.getJSON("./abi/CreateTutor.json", function (result) {
@@ -24,21 +25,44 @@ $.getJSON("./abi/CreateTutor.json", function (result) {
         }
     });
 });
-tutors_index = []
+*/
 
+GetSmartContract("/abi/BlockAppsData.json", "BlockAppsData");
+GetSmartContract("/abi/CreateTutor2.json", "CreateTutor2");
+GetSmartContract("/abi/CreateStudent2.json", "CreateStudent2");
+tutors_index = []
 function index_tutors() {
-    TutorContract.current_numbner_of_tutors(function (err, result) {
+    //TutorContract.current_numbner_of_tutors(function (err, result) {
+    SmartContracts["CreateTutor2"].call.current_numbner_of_tutors(function (err, result) {
         //console.log(result.c[0]);
         console.log("INDEX TUTORS HERE");
         for (i = 0; i < result.c[0]; i++) {
-            TutorContract.tutors_lookup(i, function (err, result) {
-                TutorContract.tutors(result, function (err, result) {
-                    console.log(result);
-                    tutors_index.push(result);
-                })
+            tutors_index[i] = {};
+            //TutorContract.tutors_lookup(i, function (err, result) {
+            SmartContracts["CreateTutor2"].call.tutors_lookup(i, function (err, result) {
+                //TutorContract.tutors(result, function (err, result) {
+                tutors_index[i].address = result;
+                /*
+                var CreateTutor2Keys = []
+                CreateTutor2Keys.push("tutor_name______");
+                CreateTutor2Keys.push("CapableOfTutorin");
+                CreateTutor2Keys.push("tutoring_website");
+                CreateTutor2Keys.push("TutoringIPFSLink");
+                CreateTutor2Keys.push("tutoring_email__");
+                CreateTutor2Keys.push("student_name____");
+                CreateTutor2Keys.push("need_tutor_for__");
+                CreateTutor2Keys.push("student_email___");
+                */
+                SmartContracts["BlockAppsData"].call.user_id_number(tutors_index[i].address, function (err, result) {
+                    tutors_index[i].user_id_number = result
+                    SmartContracts["BlockAppsData"].call.app_data(tutors_index[i].user_id_number, "tutor_name______", function (err, result) {
+                        console.log(result);
+                        tutors_index.push(result);
+                    })
+                }
+                )
             })
         }
-
     })
     console.log("index_tutors() Ran Successfully");
     console.log("tutors_index is a list and has all the tutors in the blockchain on it");
