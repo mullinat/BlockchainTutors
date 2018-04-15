@@ -18,18 +18,15 @@ function index_tutors() {
         //console.log(result.c[0]);
         console.log("INDEX TUTORS HERE");
         for (i = 0; i < result.c[0]; i++) {
-            tutors_index[i] = {};
             //TutorContract.tutors_lookup(i, function (err, result) {
-            SmartContracts["CreateTutor2"].call.current_numbner_of_tutors(function (err, result) {
-                //TutorContract.tutors(result, function (err, result) {
-                if (err) {
-                    console.log(err);
-                }
-                console.log(result.c[0]);
-                for (var i = 0; i < result.c[0]; i++) {
-                    load_tutor(i);
-                }
-            })
+            //TutorContract.tutors(result, function (err, result) {
+            if (err) {
+                console.log(err);
+            }
+            console.log(result.c[0]);
+            for (var i = 1; i <= result.c[0]; i++) {
+                load_tutor(i);
+            }
         }
     })
     console.log("index_tutors() Ran Successfully");
@@ -37,12 +34,13 @@ function index_tutors() {
 }
 function load_tutor(_num) {
     var _current_tutor = [];
-    for (var i = 0; i < CreateTutor2Keys.length; i++) {
-        SmartContracts.BlockAppsData.call.app_data(_num, CreateTutor2Keys[i], function (err, result) {
-            console.log(result);
-            _current_tutor.push(result);
-        })
-    }
+    //for (var i = 0; i < CreateTutor2Keys.length; i++) {
+    SmartContracts["BlockAppsData"].call.app_data(0, "tutor_name______", function (err, result) {
+        //CreateTutor2Keys[i], function (err, result) {
+        console.log("SEE I EXIST" + result);
+        _current_tutor.push(result);
+    })
+    //}
     tutors_index.push(_current_tutor);
 }
 
