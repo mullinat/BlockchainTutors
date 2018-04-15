@@ -54,7 +54,7 @@ function search_tutor() {
 //Store which tutors actually tutor what the student wants
 vaid_subject_indicies = []
 
-function search_tutor_subject(search_tutor_subject) {
+function search_tutor_subject(_search_tutor_string) {
     //console.log("TESTTESTTEST");
     //console.log(tutors_index.length);
     vaid_subject_indicies = []
@@ -63,7 +63,7 @@ function search_tutor_subject(search_tutor_subject) {
         var current_index = tutors_index[i][1].toLowerCase();
         console.log(current_index);
         //console.log("current_index " + current_index);
-        if (current_index.includes(search_tutor_subject.toLowerCase())) {
+        if (current_index.includes(_search_tutor_string.toLowerCase())) {
             //console.log("I is equal to " + i);
             vaid_subject_indicies.push(i);
         }
