@@ -5,9 +5,9 @@ CreateTutor2Keys.push("CapableOfTutorin");
 CreateTutor2Keys.push("tutoring_website");
 CreateTutor2Keys.push("TutoringIPFSLink");
 CreateTutor2Keys.push("tutoring_email__");
-CreateTutor2Keys.push("student_name____");
-CreateTutor2Keys.push("need_tutor_for__");
-CreateTutor2Keys.push("student_email___");
+//CreateTutor2Keys.push("student_name____");
+//CreateTutor2Keys.push("need_tutor_for__");
+//CreateTutor2Keys.push("student_email___");
 
 //The tutors are stored in this array once queried from the blockchain
 tutors_index = []
