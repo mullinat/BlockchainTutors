@@ -84,9 +84,9 @@ function search_tutor() {
         //    $("#search_results").append("<div><p>" + tutors_index[i][j] + "</p></div>")
         //}
         $("#search_results").append("<div><p>" + tutors_index[vaid_subject_indicies[i]][0] + "</p></div>");
+        $("#search_results").append("<div><p>" + tutors_index[vaid_subject_indicies[i]][1] + "</p></div>");
         $("#search_results").append("<div><p>" + tutors_index[vaid_subject_indicies[i]][2] + "</p></div>");
         $("#search_results").append("<div><p>" + tutors_index[vaid_subject_indicies[i]][3] + "</p></div>");
-        $("#search_results").append("<div><p>" + tutors_index[vaid_subject_indicies[i]][4] + "</p></div>");
         $("#search_results").append("<div><p>" + i + "</p></div>")
     }
 }
