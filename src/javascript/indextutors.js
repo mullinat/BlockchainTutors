@@ -36,9 +36,9 @@ function index_tutors() {
     console.log("tutors_index is a list and has all the tutors in the blockchain on it");
 }
 function load_tutor(_num) {
-    var _current_tutor;
+    var _current_tutor = [];
     for (var i = 0; i < CreateTutor2Keys.length; i++) {
-        SmartContracts["BlockAppsData"].call.app_data(_num, CreateTutor2Keys[i], function (err, result) {
+        SmartContracts.BlockAppsData.call.app_data(_num, CreateTutor2Keys[i], function (err, result) {
             console.log(result);
             _current_tutor.push(result);
         })
