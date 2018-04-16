@@ -1,3 +1,5 @@
+var StudentInformation;
+/*
 var MyContractABI;
 var MyContract;
 var StudentInformation;
@@ -26,6 +28,37 @@ $.getJSON("./abi/CreateStudent.json", function (result) {
         }
     });
 });
+*/
+//registerstudent();
+//editstudent();
+
+
+var student_id_number;
+var StudentInformation = [];
+function START_UI() {
+    SmartContracts.BlockAppsData.call.user_id_number(web3.eth.coinbase, function (err, result) {
+        student_id_number = result.c[0];
+        if (result.c[0] == "") {
+            registerstudent();
+        }
+        else {
+            SmartContracts.BlockAppsData.call.app_data(student_id_number, "student_name____", function (err, result) {
+                console.log(result);
+                StudentInformation.push(result);
+            })
+            SmartContracts.BlockAppsData.call.app_data(student_id_number, "need_tutor_for__", function (err, result) {
+                console.log(result);
+                StudentInformation.push(result);
+            })
+            SmartContracts.BlockAppsData.call.app_data(student_id_number, "student_email___", function (err, result) {
+                console.log(result);
+                StudentInformation.push(result);
+                editstudent();
+            })
+        }
+    });
+
+}
 
 function editstudent() {
     $.get("./src/html/editstudent.html", function (result) {
@@ -64,17 +97,17 @@ function CreateStudent() {
 function UpdateStudent(tmpID) {
     switch (tmpID) {
         case "student_name":
-            MyContract.setName(document.getElementById(tmpID).value, function () {
+            SmartContracts.BlockAppsData.call.add_user_data("student_name____", document.getElementById(tmpID).value, function () {
                 console.log("Ummm what now?")
             });
             break;
         case "student_subjects":
-            MyContract.setCapableOfTutoring(document.getElementById(tmpID).value, function () {
+            SmartContracts.BlockAppsData.call.add_user_data("need_tutor_for__", document.getElementById(tmpID).value, function () {
                 console.log("Ummm what now?")
             });
             break;
         case "student_email":
-            MyContract.setEmail(document.getElementById(tmpID).value, function () {
+            SmartContracts.BlockAppsData.call.add_user_data("student_email___", document.getElementById(tmpID).value, function () {
                 console.log("Ummm what now?")
             });
             break;
@@ -94,3 +127,10 @@ function find_a_tutor() {
         }
     })
 }
+
+
+//GetSmartContract("/abi/CreateStudent.json", "CreateStudent");
+//Import the important smart contracts
+GetSmartContract("/abi/BlockAppsData.json", "BlockAppsData");
+GetSmartContract("/abi/CreateTutor2.json", "CreateTutor2");
+GetSmartContract("/abi/CreateStudent2.json", "CreateStudent2", true);

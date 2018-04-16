@@ -32,22 +32,27 @@ var TutorInformation = []
 GetSmartContract("/abi/BlockAppsData.json", "BlockAppsData");
 GetSmartContract("/abi/CreateTutor2.json", "CreateTutor2");
 GetSmartContract("/abi/CreateStudent2.json", "CreateStudent2");
-function ContractsVariablesDeployed(){
-    SmartContracts["BlockAppsData"].call.app_data(1, "tutor_name______" , function (err, result) {
-        //console.log(result);
-        //console.log(result[0]);
-        if (result != "") {
-            TutorInformation.push(result);
-            SmartContracts["BlockAppsData"].call.app_data(1, "CapableOfTutorin" , function (err, result) {TutorInformation.push(result);})
-            SmartContracts["BlockAppsData"].call.app_data(1, "tutoring_website" , function (err, result) {TutorInformation.push(result);})
-            SmartContracts["BlockAppsData"].call.app_data(1, "TutoringIPFSLink" , function (err, result) {TutorInformation.push(result);})
-            SmartContracts["BlockAppsData"].call.app_data(1, "tutoring_email__" , function (err, result) {TutorInformation.push(result);edittutor();})
-        }
-        else {
-            registertutor();
-        }
+var tutor_id_number;
+function ContractsVariablesDeployed() {
+    SmartContracts.BlockAppsData.call.user_id_number(web3.eth.coinbase, function (err, result) {
+        tutor_id_number = result.c[0];
+        SmartContracts["BlockAppsData"].call.app_data(tutor_id_number, "tutor_name______", function (err, result) {
+            //console.log(result);
+            //console.log(result[0]);
+            if (result != "") {
+                TutorInformation.push(result);
+                SmartContracts["BlockAppsData"].call.app_data(tutor_id_number, "CapableOfTutorin", function (err, result) { TutorInformation.push(result); })
+                SmartContracts["BlockAppsData"].call.app_data(tutor_id_number, "tutoring_website", function (err, result) { TutorInformation.push(result); })
+                SmartContracts["BlockAppsData"].call.app_data(tutor_id_number, "TutoringIPFSLink", function (err, result) { TutorInformation.push(result); })
+                SmartContracts["BlockAppsData"].call.app_data(tutor_id_number, "tutoring_email__", function (err, result) { TutorInformation.push(result); edittutor(); })
+            }
+            else {
+                registertutor();
+            }
+        });
     });
 }
+
 function registertutor() {
     $.get("./src/html/registertutor.html", function (result) {
         $("body").append(result);
@@ -68,9 +73,9 @@ function edittutor() {
 function showTutorInformation() {
     $("#showTutorInformation").append("<p>Name : " + TutorInformation[0] + "</p>");
     $("#showTutorInformation").append("<p>Topics of Interest : " + TutorInformation[1] + "</p>");
-    $("#showTutorInformation").append("<p>Website : " + TutorInformation[2] + "</p>");
-    $("#showTutorInformation").append("<p>IPFS : " + TutorInformation[3] + "</p>");
-    $("#showTutorInformation").append("<p>email : " + TutorInformation[4] + "</p>");
+    $("#showTutorInformation").append("<p>Website : " + TutorInformation[1] + "</p>");
+    $("#showTutorInformation").append("<p>IPFS : " + TutorInformation[2] + "</p>");
+    $("#showTutorInformation").append("<p>email : " + TutorInformation[3] + "</p>");
 }
 
 function CreateTutor() {

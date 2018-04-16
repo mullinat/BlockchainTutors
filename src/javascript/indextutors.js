@@ -1,95 +1,58 @@
-/*
-var TutorContractABI;
-var TutorContract;
-$.getJSON("./abi/CreateTutor.json", function (result) {
-    //console.log(result);
-    //console.log(field);
-    TutorContractABI = result;
-    var tmp_networks = [];
-    for (var i in TutorContractABI.networks) {
-        tmp_networks.push(i);
-    }
-    //console.log("tmp_networks = " + tmp_networks);
-    //console.log(tmp_networks[tmp_networks.length-1]);
-    var tmp_the_correct_network = tmp_networks[tmp_networks.length - 1];
-    var address = TutorContractABI.networks[tmp_the_correct_network].address;
-    TutorContract = web3.eth.contract(TutorContractABI.abi).at(address);
-    TutorContract.tutors(web3.eth.coinbase, function (err, result) {
-        //console.log(result);
-        //console.log(result[0]);
-        TutorInformation = result;
-        if (result[0] == "") {
-            console.log("registertutor()");
-        } else {
-            console.log("edittutor()");
-        }
-    });
-});
-*/
+//CreateTutor2Keys has all the fields for tutor information
+var CreateTutor2Keys = []
+CreateTutor2Keys.push("tutor_name______");
+CreateTutor2Keys.push("CapableOfTutorin");
+CreateTutor2Keys.push("tutoring_website");
+CreateTutor2Keys.push("TutoringIPFSLink");
+CreateTutor2Keys.push("tutoring_email__");
+//CreateTutor2Keys.push("student_name____");
+//CreateTutor2Keys.push("need_tutor_for__");
+//CreateTutor2Keys.push("student_email___");
 
-GetSmartContract("/abi/BlockAppsData.json", "BlockAppsData");
-GetSmartContract("/abi/CreateTutor2.json", "CreateTutor2");
-GetSmartContract("/abi/CreateStudent2.json", "CreateStudent2");
+//The tutors are stored in this array once queried from the blockchain
 tutors_index = []
+
+//This gets all the tutors from the blockchain and puts them in tutors_index
 function index_tutors() {
-    //TutorContract.current_numbner_of_tutors(function (err, result) {
     SmartContracts["CreateTutor2"].call.current_numbner_of_tutors(function (err, result) {
         //console.log(result.c[0]);
         console.log("INDEX TUTORS HERE");
         for (i = 0; i < result.c[0]; i++) {
-            tutors_index[i] = {};
             //TutorContract.tutors_lookup(i, function (err, result) {
-            SmartContracts["CreateTutor2"].call.tutors_lookup(i, function (err, result) {
-                //TutorContract.tutors(result, function (err, result) {
-                tutors_index[i].address = result;
-                /*
-                var CreateTutor2Keys = []
-                CreateTutor2Keys.push("tutor_name______");
-                CreateTutor2Keys.push("CapableOfTutorin");
-                CreateTutor2Keys.push("tutoring_website");
-                CreateTutor2Keys.push("TutoringIPFSLink");
-                CreateTutor2Keys.push("tutoring_email__");
-                CreateTutor2Keys.push("student_name____");
-                CreateTutor2Keys.push("need_tutor_for__");
-                CreateTutor2Keys.push("student_email___");
-                */
-                SmartContracts["BlockAppsData"].call.user_id_number(tutors_index[i].address, function (err, result) {
-                    tutors_index[i].user_id_number = result
-                    SmartContracts["BlockAppsData"].call.app_data(tutors_index[i].user_id_number, "tutor_name______", function (err, result) {
-                        console.log(result);
-                        tutors_index[i]["tutor_name______"] = result;
-                    })
-                    SmartContracts["BlockAppsData"].call.app_data(tutors_index[i].user_id_number, "CapableOfTutorin", function (err, result) {
-                        console.log(result);
-                        tutors_index[i]["CapableOfTutorin"] = result;
-                    })
-                    SmartContracts["BlockAppsData"].call.app_data(tutors_index[i].user_id_number, "tutoring_website", function (err, result) {
-                        console.log(result);
-                        tutors_index[i]["tutoring_website"] = result;
-                    })
-                    SmartContracts["BlockAppsData"].call.app_data(tutors_index[i].user_id_number, "TutoringIPFSLink", function (err, result) {
-                        console.log(result);
-                        tutors_index[i]["TutoringIPFSLink"] = result;
-                    })
-                    SmartContracts["BlockAppsData"].call.app_data(tutors_index[i].user_id_number, "tutoring_email__", function (err, result) {
-                        console.log(result);
-                        tutors_index[i]["tutoring_email__"] = result;
-                    })
-                }
-                )
-            })
+            //TutorContract.tutors(result, function (err, result) {
+            if (err) {
+                console.log(err);
+            }
+            console.log(result.c[0]);
+            for (var i = 1; i <= result.c[0]; i++) {
+                load_tutor(i);
+            }
         }
     })
     console.log("index_tutors() Ran Successfully");
     console.log("tutors_index is a list and has all the tutors in the blockchain on it");
 }
+function load_tutor(_num) {
+    var _current_tutor = [];
+    //for (var i = 0; i < CreateTutor2Keys.length; i++) {
+    SmartContracts["BlockAppsData"].call.app_data(0, "tutor_name______", function (err, result) {
+        //CreateTutor2Keys[i], function (err, result) {
+        console.log("SEE I EXIST" + result);
+        _current_tutor.push(result);
+    })
+    //}
+    tutors_index.push(_current_tutor);
+}
 
+//I need to check that this does
 function search_tutor() {
     search_tutor_subject(document.getElementById("tutor_search_box").value);
 }
+
+//Store which tutors actually tutor what the student wants
 vaid_subject_indicies = []
 
-function search_tutor_subject(search_tutor_subject) {
+function search_tutor_subject(_search_tutor_string) {
     //console.log("TESTTESTTEST");
     //console.log(tutors_index.length);
     vaid_subject_indicies = []
@@ -98,7 +61,7 @@ function search_tutor_subject(search_tutor_subject) {
         var current_index = tutors_index[i][1].toLowerCase();
         console.log(current_index);
         //console.log("current_index " + current_index);
-        if (current_index.includes(search_tutor_subject.toLowerCase())) {
+        if (current_index.includes(_search_tutor_string.toLowerCase())) {
             //console.log("I is equal to " + i);
             vaid_subject_indicies.push(i);
         }
@@ -119,9 +82,9 @@ function search_tutor() {
         //    $("#search_results").append("<div><p>" + tutors_index[i][j] + "</p></div>")
         //}
         $("#search_results").append("<div><p>" + tutors_index[vaid_subject_indicies[i]][0] + "</p></div>");
+        $("#search_results").append("<div><p>" + tutors_index[vaid_subject_indicies[i]][1] + "</p></div>");
         $("#search_results").append("<div><p>" + tutors_index[vaid_subject_indicies[i]][2] + "</p></div>");
         $("#search_results").append("<div><p>" + tutors_index[vaid_subject_indicies[i]][3] + "</p></div>");
-        $("#search_results").append("<div><p>" + tutors_index[vaid_subject_indicies[i]][4] + "</p></div>");
         $("#search_results").append("<div><p>" + i + "</p></div>")
     }
 }

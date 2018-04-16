@@ -60,7 +60,7 @@ cd
             SmartContracts["CreateStudent2"].call.createNewStudent("Student Fred", "Student needs to learn Math", "paul@mullins.tech", function (err, result) { console.log(result) })
         }
         function check() {
-            SmartContracts["BlockAppsData"].call.usernames(1, function (err, result) { console.log(result) })
+            //SmartContracts["BlockAppsData"].call.usernames(1, function (err, result) { console.log(result) })
             for (var i = 0; i < CreateTutor2Keys.length; i++) {
                 SmartContracts["BlockAppsData"].call.app_data(1, CreateTutor2Keys[i], function (err, result) { console.log(result) })
             }
