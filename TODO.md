@@ -18,3 +18,8 @@
     * Start working on Tutor Review platform using BlockAppsData
     * Create a messaging platform on the blockchain 
         * Gota do some more reasearch and try implementing existing solutions
+* Problems
+    * Reimplement tutor search engine with current stack
+    * Design approval system
+    * Code audit the invoice system and UI
+    * I need a student/tutor invoice contract that uses the existing invoice platform
