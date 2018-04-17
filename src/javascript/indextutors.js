@@ -11,12 +11,13 @@ CreateTutor2Keys.push("tutoring_email__");
 
 //The tutors are stored in this array once queried from the blockchain
 tutors_index = []
-
+sum_of_tutors;
 //This gets all the tutors from the blockchain and puts them in tutors_index
 function index_tutors() {
     SmartContracts["CreateTutor2"].call.current_numbner_of_tutors(function (err, result) {
         //console.log(result.c[0]);
         console.log("INDEX TUTORS HERE");
+        sum_of_tutors = result.c[0];
         for (i = 1; i <= result.c[0]; i++) {
             //TutorContract.tutors_lookup(i, function (err, result) {
             //TutorContract.tutors(result, function (err, result) {
@@ -76,9 +77,9 @@ function search_tutor_subject(_search_tutor_string) {
     //console.log("TESTTESTTEST");
     //console.log(tutors_index.length);
     vaid_subject_indicies = []
-    for (var i = 0; i < CreateTutor2Keys.length; i++) {
+    for (var i = 0; i < sum_of_tutors; i++) {
         //console.log("search_tutor funcrtion should do someththing now...");
-        var current_index = CreateTutor2Keys[i][1].toLowerCase();//Error here
+        var current_index = tutors_index[i][1].toLowerCase();//Error here
         console.log(CreateTutor2Keys[i]);
         console.log(current_index);
         //console.log("current_index " + current_index);
