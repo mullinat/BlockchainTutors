@@ -17,7 +17,7 @@ function index_tutors() {
     SmartContracts["CreateTutor2"].call.current_numbner_of_tutors(function (err, result) {
         //console.log(result.c[0]);
         console.log("INDEX TUTORS HERE");
-        for (i = 0; i < result.c[0]; i++) {
+        for (i = 1; i <= result.c[0]; i++) {
             //TutorContract.tutors_lookup(i, function (err, result) {
             //TutorContract.tutors(result, function (err, result) {
             if (err) {
@@ -35,7 +35,27 @@ function index_tutors() {
 function load_tutor(_num) {
     var _current_tutor = [];
     //for (var i = 0; i < CreateTutor2Keys.length; i++) {
-    SmartContracts["BlockAppsData"].call.app_data(0, "tutor_name______", function (err, result) {
+    SmartContracts["BlockAppsData"].call.app_data(_num, CreateTutor2Keys[0], function (err, result) {
+        //CreateTutor2Keys[i], function (err, result) {
+        console.log("SEE I EXIST" + result);
+        _current_tutor.push(result);
+    })
+    SmartContracts["BlockAppsData"].call.app_data(_num, CreateTutor2Keys[1], function (err, result) {
+        //CreateTutor2Keys[i], function (err, result) {
+        console.log("SEE I EXIST" + result);
+        _current_tutor.push(result);
+    })
+    SmartContracts["BlockAppsData"].call.app_data(_num, CreateTutor2Keys[2], function (err, result) {
+        //CreateTutor2Keys[i], function (err, result) {
+        console.log("SEE I EXIST" + result);
+        _current_tutor.push(result);
+    })
+    SmartContracts["BlockAppsData"].call.app_data(_num, CreateTutor2Keys[3], function (err, result) {
+        //CreateTutor2Keys[i], function (err, result) {
+        console.log("SEE I EXIST" + result);
+        _current_tutor.push(result);
+    })
+    SmartContracts["BlockAppsData"].call.app_data(_num, CreateTutor2Keys[4], function (err, result) {
         //CreateTutor2Keys[i], function (err, result) {
         console.log("SEE I EXIST" + result);
         _current_tutor.push(result);
@@ -56,13 +76,14 @@ function search_tutor_subject(_search_tutor_string) {
     //console.log("TESTTESTTEST");
     //console.log(tutors_index.length);
     vaid_subject_indicies = []
-    for (var i = 0; i < tutors_index.length; i++) {
+    for (var i = 0; i < CreateTutor2Keys.length; i++) {
         //console.log("search_tutor funcrtion should do someththing now...");
-        var current_index = tutors_index[i][1].toLowerCase();
+        var current_index = CreateTutor2Keys[i][1].toLowerCase();//Error here
+        console.log(CreateTutor2Keys[i]);
         console.log(current_index);
         //console.log("current_index " + current_index);
         if (current_index.includes(_search_tutor_string.toLowerCase())) {
-            //console.log("I is equal to " + i);
+            console.log("I is equal to " + i);
             vaid_subject_indicies.push(i);
         }
     }
